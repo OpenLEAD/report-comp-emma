@@ -1,0 +1,138 @@
+\documentclass[a4paper,11pt,oneside,brazilian,
+draft=false,twocolumn]{report}%openany,version=last
+
+\setlength{\columnsep}{15pt}
+\usepackage{float} 
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{mybook}
+\usepackage{fancyhdr} 
+\usepackage{pdflscape}
+\usepackage{pdfpages} 
+\usepackage[toc,page]{appendix}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{titletoc}
+\usepackage{longtable}
+\usepackage[brazilian]{babel} 
+\usepackage{hyperref} 
+
+\newcommand*{\fancychapterstyle}{%
+  \titleformat{\chapter} % command
+	[block] % shape
+	{\bfseries\Large\itshape} % format
+	{	\textsc{\LARGE Compilação de relatórios técnicos} 
+		\newline \newline  
+		\textsc{\Large Capítulo \ \thechapter}
+	} % label
+	{0.5ex} % sep
+	{
+    	\rule{\textwidth}{2pt}
+    	\vspace{1ex}
+    	\centering
+    	\huge \textnormal
+	} % before-code
+	[
+		\vspace{-1ex}%
+		\rule{\textwidth}{2pt}
+		\vfill \includegraphics{logo/EMMA-logo}
+	] % after-code
+}
+
+\newcommand*{\standardchapterstyle}{%
+  \titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+  \titlespacing*{\chapter}{0pt}{50pt}{40pt}
+}
+ 
+\pdfcompresslevel = 9
+\oddsidemargin = 31pt
+\topmargin = 20pt
+\headheight = 12pt
+\headsep = 25pt
+\textheight = 592pt
+\textwidth = 390pt
+\marginparsep = 10pt
+\marginparwidth = 35pt
+\footskip = 30pt
+\pagenumbering{gobble}
+
+\begin{document} 
+ 
+\pagenumbering{arabic}  
+\include{capa}
+\include{frontpage}
+
+\tableofcontents
+
+\fancychapterstyle
+
+\chapter{Resumo gerencial}\label{chap::resumo}
+\include{resumo}
+
+\chapter{Plano de Projeto}\label{chap::planejamento}
+\include{planejamento}
+
+
+\chapter{Relatório Quadrimestral 1}
+\includepdf[pages=1-]{pdfs/sota}
+
+\chapter{Relatório Quadrimestral 2}
+\includepdf[pages=1-]{pdfs/detail}
+
+\chapter{Relatório Quadrimestral 3}
+\includepdf[pages=1-]{pdfs/method}
+
+\chapter{Viagem Inaugural}
+\includepdf[pages=1-]{pdfs/Viagem01_EMMA}
+\includepdf[pages=1-]{pdfs/Viagem01_EMMA_ESBR}
+
+\chapter{Viagem de reconhecimento Rijeza}
+\includepdf[pages=1-]{pdfs/Viagem02_EMMA}
+\includepdf[pages=1-]{pdfs/Viagem02_EMMA_ESBR}
+
+\chapter{Viagem de testes de campo}
+\includepdf[pages=1-]{pdfs/Viagem04_EMMA}
+\includepdf[pages=1-]{pdfs/Viagem04_EMMA_ESBR}
+\includepdf[pages=1-]{psfs/Relatorio_FARO}
+
+\chapter{Capacitação}
+\include{capacitacao}
+
+\chapter{Certificação}
+\include{certificacao}
+
+
+
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+
+
+
+ 
+ 
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+%\chapter{Registros Fotográficos}
+%\include{Nov2013}
+%\include{solen}
+%\include{LabOceano}
+%\include{Jun2014}
+%\include{Nov2014}
+%\include{Jan2015}
+
+
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+
+
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+
+%\chapter{Justificativa das alterações das informações relacionadas ao projeto
+%base do XML inicial e a composição do XML final}
+%\include{justificativaXML}
+
+\standardchapterstyle   
+\end{document}
