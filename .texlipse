@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Fri Apr 01 10:42:33 BRT 2016
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=
+mainTexFile=main.tex
+outputFile=report_comp_emma.pdf
+langSpell=
+markDer=true
+srcDir=
