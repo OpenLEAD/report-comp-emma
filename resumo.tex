@@ -7,46 +7,80 @@ desinstalar e remover as pás. A metodologia do processo é iniciada com o
 ensecamento e entrada do corpo técnico ao circuito hidráulico. A metodologia
 desenvolvida segue como explicado pelas imagens.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\columnwidth]{figs/manolo}
+\begin{figure}[H] 
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=0.9\linewidth, height=4cm]{figs/manolo} 
 \caption{A equipe técnica analisa a pá verificando o desgaste do coating
 existente e se existem danos a pá em si.}
+\label{fig:subim1}
+\end{subfigure}
+~
+\begin{subfigure}{0.5\textwidth}
+\label{fig:subim2}
+\includegraphics[width=0.9\linewidth, height=4cm]{figs/modelo_pa_faro}
+\caption{Dado a necessidade de reparo um laser scanner de metrologia é
+utilizado para mapear o dano com uma precisão de 2mm.}
+\end{subfigure}
+ \label{fig:image2}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.9\columnwidth]{figs/modelo_pa_faro}
-\caption{Dado a necessidade de reparo um laser scanner de metrologia é utilizado
-para mapear o dano com uma precisão de 2mm.}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\columnwidth]{figs/EMMA_Base_Secundaria_01}
+\ContinuedFloat
+\begin{subfigure}{0.5\linewidth}
+\includegraphics[width=0.9\linewidth, height=4cm]{figs/EMMA_Base_Secundaria_01} 
 \caption{Um trilho modular é instalado no ambiente e aconrado através de pinos
 magnéticos. O trilho é utilizado para levar o manipulador até a pá e movimentar
 o manipulador ao longo da área de trabalho.}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\columnwidth]{figs/localizacao}
+\end{subfigure}
+~
+\begin{subfigure}{0.5\linewidth}
+\label{fig:subim2}
+\includegraphics[width=0.9\linewidth, height=4cm]{figs/localizacao}
 \caption{Algoritmo de processamento de nuvens de pontos analisam um scan laser
 do ambiente e estimam a posição relativa entre o manipulador e a pá.}
+\end{subfigure}
+ \label{fig:image2}
 \end{figure}
 
+
+
+% \begin{figure}[h!]
+% \centering
+% \captionsetup[subfigure]{position=b}
+% \caption{3D printed wax mould post processing}
+% \label{fig:Mould}
+% \subcaptionbox{Um trilho modular é instalado no ambiente e aconrado através de pinos
+% magnéticos. O trilho é utilizado para levar o manipulador até a pá e movimentar
+% o manipulador ao longo da área de
+% trabalho.\label{fig:MouldWithSupport}}{\includegraphics[width=0.5\linewidth, height=4cm]{figs/EMMA_Base_Secundaria_01}}
+% \subcaptionbox{Algoritmo de processamento de nuvens de pontos analisam um scan laser
+% do ambiente e estimam a posição relativa entre o manipulador e a pá.
+% \label{fig:MouldAfterWashing}}{\includegraphics[width=0.5\linewidth, height=4cm]{figs/localizacao}}
+% \end{figure}
+% \end{document}
+
+
+
+
+
+
+
+
+
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.9\columnwidth]{figs/robots_evo}
+\ContinuedFloat
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=0.9\linewidth, height=4cm]{figs/robots_evo} 
 \caption{O equipamento necessário para a tarefa, seja soldagem, esmerilhamento
 ou coating é instalado no manipulador e o ambiente e superfície são preparados.}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\columnwidth]{figs/footleft}
+\end{subfigure}
+~
+\begin{subfigure}{0.5\textwidth}
+\label{fig:subim2}
+\includegraphics[width=0.9\linewidth, height=4cm]{figs/footleft}
 \caption{O algoritmo estima e executa a trajetória para a tarefa planejada.}
+\end{subfigure}
+ \label{fig:image2}
 \end{figure}
 
 O resultado do processo é uma pá restaurada e protegida, aumentando a eficiência
@@ -81,11 +115,11 @@ Os objetivos específicos são determinar as metodologias:
 
 \begin{itemize}
   \item definir o manipulador ótimo para cada hidroelétrica 
-  \item movimentar o manipulador no dentro do circuito hidráulico
+  \item movimentar o manipulador dentro do circuito hidráulico
   \item estimar a posição do manipulador com relação ao meio
   \item material e técnica de coating e reparo 
   \item preparar o meio e superfície
-  \item logística para instalar um sistema robótica no circuito hidráulico
+  \item logística para instalar um sistema robótico no circuito hidráulico
   \item determinar os riscos associados
   \item planejar e executar a manipulação
   \item representar as diferentes informações do processo para um operador
@@ -110,13 +144,13 @@ setor elétrico brasileiro e é um avanço com relação ao estado da arte.
 
 \section{Aplicabilidade}
 
-A metodologia desenvolvido no projeto  poderá ser aplicada na maioria das
+A metodologia desenvolvida no projeto  poderá ser aplicada na maioria das
 hidroelétricas de médio ou grande porte. A metodologia determina o tamanho e
-manipulador ótimo para o circuito hidráulico em questão, assim como, qual
-material de coating a ser aplicado. A restrição para aplicação da tecnologia é
+modelo de manipulador ótimo para o circuito hidráulico em questão, assim como,
+qual material de coating a ser aplicado. A restrição para aplicação da tecnologia é
 apenas dada pelo espaço entre as pás, em hidroelétricas de pequeno porte a arma
 de coating não cabe entre as pás. Logo, a abrangência é nacional, entretanto com
-restrição de uso em pequena unidade geradoras.
+restrição de uso em pequenas unidades geradoras.
 
 \section{Relevância}
 
@@ -125,7 +159,7 @@ hidráulica, com um grande número de centrais em rios tipos corredeiras que
 possuem reservatórios pequenos. Neste tipo de rio não há tempo de sedimentação
 das partículas sólidas na água, essas partículas sólidas, mesmo em quantidades
 pequenas, geram um elevado nível de desgaste por erosão e cavitação. Logo, o
-projeto é de relevância para o sector elétrico e para a nação, pois aumenta a
+projeto é de relevância para o setor elétrico e para a nação, pois aumenta a
 eficiência da matriz energética Brasileira, aumenta a disponibilidade da máquina
 para geração e reduz os custos de manutenção, representando uma melhora
 econômica e social.
@@ -138,25 +172,30 @@ no país. O desenvolvimento do EMMA, no âmbito P\&D é um exemplo de como a
 parceria entre agências do governo, empresa e universidades podem colaborar para
 a capacitação tecnológica e o desenvolvimento de novas tecnologias.
 
-O projeto EMMA possui 7 pesquisadores inscritos no mestrado. Os temas são todos
+O projeto EMMA possui 4 pesquisadores inscritos no mestrado. Os temas são todos
 a pesquisa no campo da robótica, sendo a previsão de conclusão das teses
 esperada para a fase 2 e fase 3 do EMMA. Os alunos de mestrado e seus
 respectivos cursos são:
 
 \begin{itemize}
-  \item Estevão Fróes Ferrão, Programa de Engenharia Mecânica/COPPE
-  \item Gabriel Alcantara Costa Silva, Programa de Engenharia Elétrica/COPPE
-  \item Renan Sales de Freitas, Programa de Engenharia Elétrica/COPPE
-  \item Eduardo Elael de Melo Soares, Programa de Engenharia Elétrica/COPPE
-  \item Julia Ramos Campana %TODO Julia departamento
+  \item Estevão Fróes Ferrão, Programa de Engenharia Mecânica/COPPE, Rio de
+  Janeiro
+  \item Gabriel Alcantara Costa Silva, Programa de Engenharia Elétrica/COPPE,
+  Rio de Janeiro
+  \item Eduardo Elael de Melo Soares, Programa de Engenharia Elétrica/COPPE, Rio
+  de Janeiro
+  \item Julia Ramos Campana, Departamento de Artes e Design, PUC, Rio de Janeiro
 \end{itemize}
 
+Para o comprimento dos requisitos de segurança do Ministério do Trabalho e
+Emprego, a equipe do projeto foi submetida à capacitação em segurança, nas
+normas relevantes às situações encontradas no interior do circuito hidráulico. As certificações foram nas
+seguintes normas:
+
 \begin{itemize}
-  \item Estevão Fróes Ferrão, Programa de Engenharia Mecânica/COPPE
-  \item Gabriel Alcantara Costa Silva, Programa de Engenharia Elétrica/COPPE
-  \item Renan Sales de Freitas, Programa de Engenharia Elétrica/COPPE
-  \item Eduardo Elael de Melo Soares, Programa de Engenharia Elétrica/COPPE
-  \item Julia Ramos Campana %TODO Julia departamento
+  \item NR10 - Segurança e Instalações e Serviços em Eletricidade
+  \item NR33 - Segurança e Saúde nos Trabalhos em Espaços Confinados
+  \item NR35 - Trabalho em Altura
 \end{itemize}
 
 Os seguintes pesquisadores foram capacitados no curso:
@@ -263,10 +302,73 @@ caldeiras.
 
 \section{Instituição e Equipe}
 
-m paragrafo sobre a UFRJ e o LEAD 
+O LEAD (Laboratório de Controle e Automação, Engenharia de Aplicação e
+Desenvolvimento) é fruto de uma parceria entre a Petrobras e a Universidade Federal do Rio de Janeiro (UFRJ) que visa ao desenvolvimento de novas tecnologias na área de Automação e Controle.
+Na avaliação da estatal brasileira de petróleo, ‘‘o laboratório reforça a
+estratégia de desenvolvimento em conjunto de novas tecnologias, o que traz
+benefícios tanto para as universidades, que realizam suas pesquisas acadêmicas
+em laboratórios de ponta, quanto para a Petrobras que, ao compartilhar
+conhecimentos, cria competências para superar seus desafios tecnológicos e
+empresariais”.
 
-Um paragrafo sobre a Rijeza 
+DARLAN PARAGRAFO RIJEZA
 
-Todos: Adicionar uma foto. Um paragrafo sobre sua qualificação. E um parágrafo
-sobre sua pesquisa dentro do EMMA.
+%TODO DARLAN PARAGRAFO RIJEZA
 
+A equipe técnica alocada para a realização do projeto EMMA:
+
+\begin{itemize}
+  \item Renan Salles de Freitas, Engenheiro de Controle e
+Automação pela UFRJ, Rio de Janeiro, Brasil, e Candidato a Mestre em Ciências em Engenharia Elétrica
+pelo Programa de Engenharia Elétrica, COPPE/UFRJ, Rio de Janeiro, Brasil. No
+projeto EMMA, Renan é membro da equipe de Controle e Robótica, e responsável
+pelas seguintes atividades: Manipuladores industriais: pesquisa de
+mercado, análise cinemática, dinâmica e controle; Desenvolvimento do ambiente de
+simulação para análise de soluções; Análise de viabilidade técnica do EMMA pela
+visão da robótica e do controle; Desenvolvimento e simulação de algoritmos de
+planejamento de trajetória.
+
+  \item Estevão Fróes Ferrão possui graduação em Engenharia Mecânica pela Universidade
+Federal do Rio de Janeiro (UFRJ), atualmente cursando o mestrado no Programa de Engenharia
+Mecânica (PEM-COPPE/UFRJ). Faz parte da equipe do Projeto EMMA, como
+Pesquisador/Engenheiro contratado pelo LEAD. Atua na área de Projeto Mecânico,
+sendo resposável pela pesquisa, projeto e desenvolvimento de uma solução
+mecânica para uma base com graus de liberdade que permitem o posicionamento do
+robô utilizado.
+
+\item Julia Ramos Campana é formada em Comunição Técnica e Mídia pelo Instituto de
+Tecnologia e Illinois, pós graduada em Design Digital pela Vancouver Film School
+e em Gerenciamento de Projeto pela Universidade da Columbia Britânica, é
+atualmente aluna do Mestrado em Design pela PUC-RJ. Julia exerce a função de
+Designer de interface e Usabilidade no projeto EMMA, trabalhando no
+desenvolvimento do software de controle do sistema EMMA e em todas as questões
+relacionadas aos usuários, testes e interações humano-automação da pesquisa.
+\item Eduardo Elael de Melo Soares, Engenheiro de Controle e Automação pela UFRJ, Rio
+de Janeiro, Brasil, e mestrando em Ciências em Engenharia Elétrica pelo
+Programa de Engenharia Elétrica, COPPE/UFRJ, Rio de Janeiro, Brasil. No projeto
+EMMA, Eduardo é membro da equipe de Controle e Robótica, e responsável pelas
+seguintes atividades: Manipuladores de pequeno porte: Pesquisa e análise
+geométrica; Realimentação de segurança: Pesquisa de laser 1D para uso em tempo
+real; Reconhecimento de ambiente: Escolha e adaptação de técnicas para
+reconhecimento da posição do Robô no ambiente; Desenvolvimento e simulação de
+algoritmos de planejamento de trajetória.
+\item Gabriel Alcantara Costa Silva, Engenheiro de Controle e Automação pela
+UFRJ, Rio de Janeiro, Brasil, e mestrando em Ciências em Engenharia Elétrica pelo
+Programa de Engenharia Elétrica, COPPE/UFRJ, Rio de Janeiro, Brasil. No projeto
+EMMA, Eduardo é membro da equipe de desenvolvimento de software para sistemas
+robóticos, e responsável pelas seguintes atividades: Desenvolvimento de técnicas
+em visualização, localização e mapeamento 3D; Identificação e
+Localização de objetos; Integração do sistema.
+
+\end{itemize}
+
+
+
+
+
+
+
+
+    
+    
+  
