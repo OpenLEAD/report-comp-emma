@@ -1,0 +1,84 @@
+\documentclass{main}
+ 
+ % New packages   
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{pdfpages}
+
+%\usepackage[caption=false]{subfig}
+       % required for bibliography
+%\usepackage[brazilian]{babel}
+%\newlength\shlength
+%\captionsetup[subfigure]{labelformat=brace}
+
+% --------------------------
+
+
+\usepackage{graphicx}      % include this line if your document contains figures
+\usepackage{natbib} 
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[centerlast,small,sc]{caption} 
+\setlength{\captionmargin}{30pt}
+\usepackage[none]{hyphenat} 
+\usepackage{subcaption} 
+\usepackage{capt-of}
+\usepackage{kpfonts} 
+\usepackage{calc}
+\usepackage{hyperref}
+\newcommand\xshlongvec[2][0]{\setlength\shlength{#1pt}%
+  \stackengine{-5.6pt}{$#2$}{\smash{$\kern\shlength%
+    \stackengine{7.55pt}{$\mathchar"017E$}%
+      {\rule{\widthof{$#2$}}{.57pt}\kern.4pt}{O}{r}{F}{F}{L}\kern-\shlength$}}%
+      {O}{c}{F}{T}{S}}
+\sloppy      
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+
+\begin{document}
+
+\begin{frontmatter}
+
+%TODO Ajeitar o título para ser compatível com essa segunda fase.
+\title{Estudo de viabilidade técnica para revestimento robótico de turbinas \textit{in situ} - EMMA
+\thanksref{footnoteinfo}} 
+
+\thanks[footnoteinfo]{This work is supported by ESBR under contract COPPETEC
+JIRAU 09/15 6631-0003/2015 (ANEEL R\&D program).}
+
+\author[1]{Renan S. Freitas}
+\author[1]{Gabriel Alcantara C. S.}
+\author[1]{Eduardo Elael M. S.}
+\author[1]{Estevão Fróes}
+\author[1]{Julia Campana}
+\author[1]{Ramon R. Costa}
+%\author[2]{Sylvain Joyeux}
+%\author[2]{Patrick M. Paranhos}
+
+  \address[1]{Departamento de Engenharia Elétrica, COPPE UFRJ, Rio de Janeiro,
+  Brasil} 
+  % TODO Renan: Verificar departamento do patrick e sylvain
+%  \address[2]{Centro de Inovação em Robótica (CIR), Rio de Janeiro, Brasil}
+  
+% \begin{abstract}                % Abstract of not more than 250 words.
+% %TODO Renan: Resumo
+% \end{abstract} 
+%  
+% \begin{keyword}
+% %TODO Renan: Keywords
+% \end{keyword}
+
+\end{frontmatter}
+
+\input{Introduction}
+%\include{Descricao}
+\input{estudo_viatec} 
+\input{Localizacao}
+\input{interface_usuario}
+\input{conclusao}
+\input{apendice}
+  
+\bibliography{main} 
+\appendix
+\end{document}

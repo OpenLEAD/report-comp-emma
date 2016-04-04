@@ -1,0 +1,84 @@
+ \section{Interface de Usuários}\label{sec::interface} 
+
+A interface gráfica do usuário permite a interação com o manipulador para a
+executar as tarefas inspeção e metalização das pás in Situ. O objetivo é de facilitar a usabilidade do software dando
+visibilidade aos dispositivos do sistema e monitorando o processo de metalização das pás.
+O estudo de viabilidade técnica prevê seu detalhamento até seu design
+conceitual, uma vez que seu desenvolvimento efetivo acontecerá posteriormente na
+fase de execução do projeto EMMA.
+
+
+\subsection{Pesquisa de usuários}
+A pesquisa de usuário identifica todos os atores possíveis no contexto de uso do
+software em questão, assim como coleta dados a respeito de seus possíveis usuários com o intuito de 
+aprender sobre suas características, necessidades e preferências. Seu objtivo é
+de elaborar arquétipos que sirvam como referência na tomada de decisões e na
+arquitetura e design do sistema, bem como auxiliar nos requisitos funcionais e
+não funcionais.
+
+
+\subsection{Análise de Tarefas}
+A análise de tarefas ocorre de forma simultânea a pesquisa de usuários, podendo
+ser aplicado a uma variedade de técnicas para identificar e compreender a estrutura, o fluxo, 
+e os atributos de tarefas executadas na metalização das pás. Seu objetivo é de
+identificar as ações e processos cognitivos necessários que o usuário complete
+uma tarefa ou atinja um objetivo particular. A partir desta análise de tarefas é
+possível projetar e atribuir atividades de forma adequada dentro do novo sistema.
+Para realizar a metalizaçào das pás in Situ o softeware do robô EMMA vai
+realizar 3 tarefas distintas: calibração, planejamento de trajetória e
+metalização.
+
+
+\subsubsection{Calibração}
+A etapa de calibração é efetuada toda vez que o robô precisa ser
+posicionado ou reposicionado no ambiente do aro câmera. O objetivo é de
+reconhecer no ambiente confinado todos os elementos que fazem parte da
+operação. Através de um sensor laser é obtida uma nuvem de pontos que
+posteriormente é analisada e fornece as posições do manipulador em relaçào a pá
+e ao trilho mecânico. A partir desses dados é opossível realizar o planejar a
+trajetória do robô.
+
+
+\subsubsection{Planejamento de Trajetória}
+Planejamento de trajetória define como o robô irá executar a aplicação de
+revestimento nas pás. A partir das posições do robô em relaçào a pá são geradas
+trajetórias que o efetuador irá percorrer para realizar o revestimento em toda a
+superfície da pá. Cada configuração do manipulador se relaciona com uma lista de
+ângulos das juntas do robô. A aplicação de metalizaçào é dividida em
+etapas, para cada uma delas são geradas n configurações gerando assim uma matriz de
+ângulo dessas juntas.
+
+
+\subsubsection{Metalização}
+A etapa de matalização conclui o processo de reparo e manutenção das pás pa
+partir da aplicação de revestimento metálico. Como definido no \textit{Estudo do
+conceito para metodologia e revestimento robótico de turbinas In situ}
+
+
+\subsection{Casos de Uso}
+Casos de uso descreve os cenários e usuários presentes nas atividades do robô.
+Desta forma é possível viazualizar funcionalidades do sistema do ponto de vista
+do usuário e de auxiliar na comunicação entre desenvolvedores e
+clientes.
+
+\subsection{Design Conceitual}
+Design conceitual corresponde a um protótipo baseado na pesquisa de usuários,
+análise de tarefas e casos de uso. É elaborado um desenho de estrutura, mais
+conhecido como 'wireframe' onde se descreve as funcionalidades e posicionamento
+de dispositivos. A partir são elaborados os primeiros testes de interação para
+verificar seu funcionamento.
+
+\subsection{Estrutura de Testes de Usabilidade}
+Em um primeiro momento é preciso testar a estrutura do teste por meio de
+observação dos usuários. Ao verificar se os testes são capazes de prover as
+informações necessárias, é definido como o teste de usabilidade será aplicado.
+Nesse contexto é de suma importância que todas vezes que o teste ocorra, seja
+aplicado a um usuário diferente. O objetivo é que este não tenha em mente o
+teste anterior a fim de garantir sua eficiência.
+
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+\subsection{Descrição do processo HVOF}\label{sec::desc_hvof}
+O revestimento por aspersão térmica (ou metalização) é um processo em que
+partículas aquecidas são pulverizadas em uma superfície a fim de melhorar ou
+restaurar suas propriedades e dimensões. O revestimento estende a vida útil do
+material, aumentando significantemente a sua resistência à erosão e corrosão.
+Os diferentes tipos de metalização são: por chama, arco elétrico, detonação,
+chama de alta velocidade (HVOF), plasma, a frio e a quente.
+
+Um sistema de metalização é composto por: uma pistola de aspersão, responsável
+pelo derretimento e aceleração das partículas a serem depositadas na
+superfície; um alimentador, que fornece o pó (partículas) através de tubos;
+um fornecedor do material de combustão; um robô para manipular a pistola; uma
+fonte de alimentação elétrica para a pistola; um console de controle para o
+sistema.
+
+No caso específico das pás (aço inox 420) das turbinas da usina hidrelétrica de
+Jirau, antes da montagem da turbina, a metalização tipo HVOF é realizada em
+ambos os lados da pá pela empresa Rijeza com um manipulador industrial de 150 kg
+de carga máxima, permitindo controle de vibrações com boa margem de segurança, já que a massa do
+sistema pode chegar a 20 kg (cabos e pistola). O tempo
+médio do processo é de 6 horas por lado da pá.
+
+Primeiramente, a pá é preparada por jateamento com óxido de alumínio. O HVOF
+consiste em alimentar, numa câmara de combustão, o material de revestimento
+(carboneto de tungstênio) e uma mistura gasosa do combustível (propano) e
+oxigênio. De acordo com os dados fornecidos pela empresa Rijeza, a pistola de 8
+Kg projeta uma chama de $3000^oC$, que pulveriza as partículas com velocidade de
+700 a 1000 m/s, gerando uma força de recuo de 15 N.
+
+O manipulador robótico deve possuir precisão de 5 mm, a pistola no efetuador
+deve permanecer a uma distância que varia entre 230 e 240 mm, e ângulo de $30^0$
+a $90^0$, em relação à superfície. O manipulador deve ser capaz de mover a
+pistola a velocidade constante de 40 m/min, e não pode estar fixa em uma posição
+da pá por muito tempo (parada), pois há acúmulo de material, deformando a
+superfície. Trocas de direção ou sentido na movimentação do manipulador são
+considerados como parada, logo as trocas deverão ser realizadas em áreas
+exteriores à superfície da pá ou chapas de sacrifício são utilizadas. 
+
+Placas de sacrifício, ou mascaramento, são chapas colocadas em regões onde as
+peça não podem ser jateadas ou revestidas. Geralmente uma chapa de qualquer tipo
+de aço pode ser utilizada, pois a chama não fica parada sobre ela por um longo
+período, não aquecendo-a o suficiente para danificar. Quando a pistola fica
+parada, em funcionamento, a chama é apontada para algum lugar onde não tenha
+obstáculos.
+
+ % As informações do processo
+% podem ser observadas na figura~\ref{fig::hvof}.
+ 
+%\begin{figure}[h!]	
+%	\includegraphics[width=\columnwidth]{detail/figsintro/hvof.pdf}
+%	\caption{Foto do efetuador do manipulador e pistola HVOF.}
+%	\label{fig::hvof}
+%\end{figure}
+
+Em relação às condições de operação, o espaço da aplicação HVOF é confinado, com
+excesso de ruído de 100 a 140 dB, gases nocivos e com risco de explosão podem
+ser exalados, a pá pode atingir temperaturas de até $110^oC$, as condições de
+umidade e temperatura devem ser ideais para o processo e há perda de $40\%$
+das partículas pulverizadas  \citep{wu2006rebound}, que são espalhadas pelo
+ambiente. Portanto, a operação deve ser remota, não há presença de pessoas \textit{in loco}, os gases
+presentes e umidade/temperatura devem ser constantemente monitorados, o robô
+manipulador é selado e as partículas desperdiçadas devem ser removidas
+(limpeza). Como forma de segurança contra gases explosivos, o desligamento do
+sistema é imediato por corte de gás, porém, em caso de falta de energia, o
+manipulador será desligado, mas a chama não se apagará.
+
+A qualidade do revestimento é geralmente avaliada por um instrumento que
+realiza a medida de porosidade, oxidação, dureza e rugosidade da superfície. O
+processo é realizado manualmente, de maneira rápida e fácil, por um operador e
+pontos específicos da pá são analisados.
+
+A tabela~\ref{tab::hvof} resume as restrições e especificações do
+projeto:
+
+\begin{center}
+\begin{tabular}{  c | c  }
+  \hline
+  \textbf{Componente} & \textbf{Dado} \\ \hline
+  Massa da pistola HVOF & 8 Kg  \\ \hline
+  Massa dos cabos HVOF & 12 Kg  \\ \hline
+  Tempo HVOF por pá & 6 horas \\ \hline
+  Temperatura da chama HVOF & $3000^oC$ \\ \hline
+  Recuo da pistola & 15 N \\ \hline
+  Precisão do manipulador & 5 mm \\ \hline
+  Distância pistola-pá & 230-240 mm \\ \hline
+  Ângulo pistola-pá & $30^o$-$90^o$ \\ \hline
+  Velocidade do manipulador & 40 m/s \\ \hline
+  Ruído HVOF & 100 a 140 dB \\ \hline
+  Temperatura da pá & $110^oC$ \\
+  \hline
+\end{tabular}
+\captionof{table}{Dados principais do processo HVOF}
+%\caption{Dados principais do processo de metalização HVOF}
+\label{tab::hvof}
+\end{center}
+
+%Sistemas robóticos não devem utilizar magnetismo como meio de aderência, já que
+%o aço inox 420 não apresenta alta permeabilidade magnética e a alta temperatura
+%da pá deve inviabilizar essa solução. Adesão por ventosas é uma solução
+%viável, pois material não causa dano ao revestimento, porém a escolha do
+%material da ventosa deve ser estudado,já que a pá quente pode ocasionar em
+%perda de sucção, como em ventosas emborrachadas.
+
