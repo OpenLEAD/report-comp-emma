@@ -19,14 +19,38 @@ draft=false]{report}%openany,version=last
 \usepackage{hyperref} 
 \usepackage[position=b]{subcaption}
 \usepackage{wrapfig}
+\usepackage{natbib}        % required for bibliography
+
 
 \newcommand*{\fancychapterstyle}{%
   \titleformat{\chapter} % command
 	[block] % shape
 	{\bfseries\Large\itshape} % format
-	{	\textsc{\LARGE Compilação de relatórios técnicos} 
+	{	\textsc{\LARGE Relatório Final do Projeto EMMA} 
 		\newline \newline  
 		\textsc{\Large Capítulo \ \thechapter}
+	} % label
+	{0.5ex} % sep
+	{
+    	\rule{\textwidth}{2pt}
+    	\vspace{1ex}
+    	\centering
+    	\huge \textnormal
+	} % before-code
+	[
+		\vspace{-1ex}%
+		\rule{\textwidth}{2pt}
+		\vfill \includegraphics{logo/EMMA-logo}
+	] % after-code
+}
+
+\newcommand*{\fancyappendixstyle}{%
+  \titleformat{\chapter} % command
+	[block] % shape
+	{\bfseries\Large\itshape} % format
+	{	\textsc{\LARGE Relatório Final do Projeto EMMA} 
+		\newline \newline  
+		\textsc{\Large Apêndice \ \thechapter}
 	} % label
 	{0.5ex} % sep
 	{
@@ -63,10 +87,12 @@ draft=false]{report}%openany,version=last
 \begin{document} 
  
 \pagenumbering{arabic}  
-\include{capa}
 \include{frontpage}
 
 \tableofcontents
+\listoffigures
+\listoftables
+%TODO list of abbreviations
 
 \fancychapterstyle
 
@@ -76,57 +102,65 @@ draft=false]{report}%openany,version=last
 \chapter{Plano de Projeto}\label{chap::planejamento}
 \include{planejamento}
 
+\chapter{Estudo do conceito para metodologia e revestimento robótico
+de turbinas \textit{in situ}}
+\input{sota/Introduction} 
+\input{sota/Descricao}
+\input{sota/SOTA}
+\input{sota/Projetos}
+\input{sota/bases}
+\input{sota/conclusao}
+
 % ---------------------------------------------------------------------------
-\chapter{Relatório Quadrimestral 1}
-\includepdf[pages=1-,
-addtotoc={1,section,1,Introdução,rq11[,1,section,1,Descrição do Problema,
-rq1_2[,2,subsection,2,Descrição do
-processo
-HVOF,rq1_21[,3,subsection,2,Descrição dos
-requisitos de operação de HVOF,rq1_22[,3,subsubsection,3,Jateamento da
-superfície da pá,
-rq1_221[,3,subsubsection,3,Reparo de danos
-existentes,rq1_222[,3,paragraph,4,Reparo
-com materiais não fundidos à
-superfície,rq1_2221[,3,paragraph,4,Reparo
-por solda,rq1_2222[,3,paragraph,4,Reparo por
-solda e placa
-sólida,rq1_2223[,4,subsection,2,Contextualização
-do
-ambiente,rq1_23[,4,subsubsection,3,Hélice
-e pás,rq1_231[,4,subsubsection,3,Aro Câmara e regiões
-adjacentes,rq1_232[,5,subsubsection,3,Escotilhas
-de acesso,rq1_233[,5,subsubsection,3,Tubo de
-sucção,rq1_234[,5,subsubsection,3,Infraestrutura
-disponível,rq1_235[,6,subsection,2,Descrição das
-tarefas do robô,rq1_24[,6,section,1,Estado da
-arte,rq1_3[,6,subsection,2,Robôs sobre
-trilhos,rq1_31[,7,subsection,2,Robôs
-escaladores,rq1_32[,9,subsection,2,Robôs
-cabeados,rq1_33[,10,subsection,2,Manipulador com
-base esférica,rq1_34[,11,section,1,Projeto de
-robô autônomo para
-HVOF,rq1_4[,11,subsection,2,Acesso pela
-escotilha
-superior,rq1_41[,11,subsection,2,Acesso pela
-escotilha
-inferior,rq1_42[,12,subsubsection,3,Projeto
-de robôs em trilhos,
-rq1_421[,12,subsubsection,3,Projeto de
-robôs
-escaladores,rq1_422[,13,subsubsection,3,Projetos
-com manipuladores industriais
-fixos,rq1_423[,14,subsection,2,Solução
-conceitual,rq1_43[,14,section,1,Estudo
-de bases para manipuladores
-industriais,rq1_5[,14,subsection,2,Modelagem
-3D das soluções
-conceituais,rq1_51[,15,subsubsection,3,Dimensionamento
-da
-base,rq1_511[,17,section,1,Conclusão
-e trabalhos
-futuros,rq1_6[,18,section,1,Referências,rq1_7]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}]{pdfs/sota}
-% ---------------------------------------------------------------------------
+% \includepdf[pages=1-,
+% addtotoc={1,section,1,Introdução,rq11[,1,section,1,Descrição do Problema,
+% rq1_2[,2,subsection,2,Descrição do
+% processo
+% HVOF,rq1_21[,3,subsection,2,Descrição dos
+% requisitos de operação de HVOF,rq1_22[,3,subsubsection,3,Jateamento da
+% superfície da pá,
+% rq1_221[,3,subsubsection,3,Reparo de danos
+% existentes,rq1_222[,3,paragraph,4,Reparo
+% com materiais não fundidos à
+% superfície,rq1_2221[,3,paragraph,4,Reparo
+% por solda,rq1_2222[,3,paragraph,4,Reparo por
+% solda e placa
+% sólida,rq1_2223[,4,subsection,2,Contextualização
+% do
+% ambiente,rq1_23[,4,subsubsection,3,Hélice
+% e pás,rq1_231[,4,subsubsection,3,Aro Câmara e regiões
+% adjacentes,rq1_232[,5,subsubsection,3,Escotilhas
+% de acesso,rq1_233[,5,subsubsection,3,Tubo de
+% sucção,rq1_234[,5,subsubsection,3,Infraestrutura
+% disponível,rq1_235[,6,subsection,2,Descrição das
+% tarefas do robô,rq1_24[,6,section,1,Estado da
+% arte,rq1_3[,6,subsection,2,Robôs sobre
+% trilhos,rq1_31[,7,subsection,2,Robôs
+% escaladores,rq1_32[,9,subsection,2,Robôs
+% cabeados,rq1_33[,10,subsection,2,Manipulador com
+% base esférica,rq1_34[,11,section,1,Projeto de
+% robô autônomo para
+% HVOF,rq1_4[,11,subsection,2,Acesso pela
+% escotilha
+% superior,rq1_41[,11,subsection,2,Acesso pela
+% escotilha
+% inferior,rq1_42[,12,subsubsection,3,Projeto
+% de robôs em trilhos,
+% rq1_421[,12,subsubsection,3,Projeto de
+% robôs
+% escaladores,rq1_422[,13,subsubsection,3,Projetos
+% com manipuladores industriais
+% fixos,rq1_423[,14,subsection,2,Solução
+% conceitual,rq1_43[,14,section,1,Estudo
+% de bases para manipuladores
+% industriais,rq1_5[,14,subsection,2,Modelagem
+% 3D das soluções
+% conceituais,rq1_51[,15,subsubsection,3,Dimensionamento
+% da
+% base,rq1_511[,17,section,1,Conclusão
+% e trabalhos
+% futuros,rq1_6[,18,section,1,Referências,rq1_7]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}]{pdfs/sota}
+% % ---------------------------------------------------------------------------
 
 \chapter{Relatório Quadrimestral 2}
 \includepdf[pages=1-,
@@ -248,23 +282,29 @@ de
 resultados,rq3_44[,20,subsection,2,Conclusão,rq3_45[,21,section,1,Referências,rq3_5[,21,section,1,Apêndice,rq3_6]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}]{pdfs/method}
 % ---------------------------------------------------------------------------
 
-\chapter{Viagem Inaugural}
-\includepdf[pages=1-]{pdfs/Viagem01_EMMA}
+
+\appendix
+
+
+
+\fancyappendixstyle
+
+
+\chapter{Relatórios de Viagem}
 \includepdf[pages=1-]{pdfs/Viagem01_EMMA_ESBR}
+\includepdf[pages=3-]{pdfs/Viagem01_EMMA}
 
-\chapter{Viagem de reconhecimento Rijeza}
-\includepdf[pages=1-]{pdfs/Viagem02_EMMA}
 \includepdf[pages=1-]{pdfs/Viagem02_EMMA_ESBR}
+\includepdf[pages=3-]{pdfs/Viagem02_EMMA}
 
-\chapter{Viagem de testes de campo}
-\includepdf[pages=1-]{pdfs/Viagem04_EMMA}
 \includepdf[pages=1-]{pdfs/Viagem04_EMMA_ESBR}
-\includepdf[pages=1-]{pdfs/RelatorioFARO}
+\includepdf[pages=3-]{pdfs/Viagem04_EMMA}
+
 
 \chapter{Capacitação}
 \include{capacitacao}
 
-\chapter{Certificação}
+\chapter{Certificação em segurança}
 \include{certificacao}
 
 

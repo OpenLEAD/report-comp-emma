@@ -1,0 +1,63 @@
+\subsection{Acesso pela escotilha supeior}
+Essa escotilha localizada no topo do aro câmara possui uma abertura de apenas
+35 cm de diâmetro, o que cria um desafio quando se pensa em utiliza-la como
+ponto de acesso para um robô. Por outro lado sua proximidade às pás e a área livre fora do aro
+câmara criam possibilidades interessantes para seu uso.
+
+\textbf{Vantagens}
+\begin{itemize}
+  \item Estabilidade da fixação do robô
+  \item Ponto de referência, facilitando sistemas de localização, mapeamento, controle e calibração
+  \item Pórtico rolante para posicionar o robô na escotilha
+\end{itemize}
+
+\textbf{Desvantagens}
+\begin{itemize}
+  \item Dificuldade de encontrar robôs de tal dimensão (35 cm diâmetro)
+  \item Necessidade de retirar e inserir o robô quando rodar as pás
+  \item Solução não geral, específica para UHE Jirau
+\end{itemize}
+
+A solução mais simples para este acessso é a utilização de um robô industrial
+comercial. A escolha do robô está primariamente associada ao seu alcance. Por outro lado, apenas
+uma pequena parcela dos robôs comerciais possuem a dimensão necessária para
+atravessar a escotilha. Sendo assim, o estudo foi direcionada para o uso do
+KUKA Light Weight (LBR iiwa 14 R820), robô cuja diagonal da base é inferior aos
+35 cm da escotilha.
+
+O LBR R820 pesa 30 kg, possui 7 eixos e suporta carga de 14kg,
+suficiente por uma pequena margem para carregar o equipamento de
+revestimento. Entretanto, são necessários estudos aprofundados para valida-lo,
+como os requisitos de velocidade e precisão quando percorrendo a trajetória
+para a realização do revestimento.
+
+Tendo como objetivo posicionar o LBR R820 em uma posição onde seja capaz de
+trabalhar toda a pá, um modelo de base articulada foi proposto. A base
+composta de dois elos interligados por uma junta de rotação é fixada na
+própria escotilha. Para que seja possível cobrir toda a pá,
+a base deve ser capaz de assumir diversas angulações com respeito ao
+eixo de inserção, e a junta que conecta os dois segmentos da base também precisa
+ter sua posição alterada, o que pode ser realizado manualmente ou com atuador.
+
+Introduzir o robô, composto pelo conjunto base-LBR R820, é uma tarefa cuidadosa
+pois a extensão total será maior que a distância do topo do aro câmara ao
+cone da turbina. Ou seja, o braço e a base precisarão ser rotacionados
+durante o processo de inserção, o que acarretará no desalinhamento do centro de
+massa (com relação ao eixo perpendicular à escotilha) e exigirá uma guia para
+resistir ao torque gerado por esse desalinhamento.
+
+Com o robô fixado na escotilha e a junta da base travada, são esperados torques
+inferiores a 3000 Nm sobre a junta e 4000 Nm sobre a base, durante a operação de
+revestimento.
+
+%Ao se avaliar as possibilidades de realizar o revestimento sem a necessidade de
+%placas de sacrifício, percebe-se que poderá ser realizado se a junta da
+%base estiver paralela à pá (que para efeito de cálculo foi assumida com uma
+%angulação de $45^o$ com relação ao eixo da turbina). Para esse caso a junta
+% precisa realizar uma rotação à velcidade mínima de 34 rad/min. Essa velocidade possibilita a
+%pistola de revestimento percorrer verticalmente a pá sem pausa. Percorrer
+%horizontalmente a pá não será possível devido às restrições nas dimensções da
+%base. O cálculo foi realizado por um estudo puramente geométrico, utilizando as
+%informações reais de extensão da pá e área de trabalho do robô, assumindo um
+%modelo simples da pá, sem curvatura.
+

@@ -1,0 +1,64 @@
+\subsubsection{Projeto de robôs em trilhos}\label{proj_rail}
+ % attach a rail to the blade and move it manually
+ 
+ % attach a rail one the nose and ground, 1D movement and move the blade to
+A utlização de um manipulador robótico sobre trilhos satisfaz todos os
+requisitos para a realização de um processo de inspeção e metalização utilizando a técnica HVOF. O desenvolvimento
+de um sistema compacto para o transporte através do acesso pela escotilha
+inferior e sua instalação no aro câmara da turbina são possíveis, pois as
+dimensões do manipulador podem ser reduzidas por meio da
+mobilidade extra proporcionada pela introdução do trilho.
+
+No contexto da aplicação proposta, foram concebidas duas possibilidades para a
+fixação do sistema de trilhos. A primeira solução consiste em um sistema
+semelhante ao Roboturb, apresentado na seção \ref{sec::rail}. O sistema proposto
+se trata de um manipulador robótico com fixação diretamente na pá da
+turbina. O trilho deverá ser flexível para ser capaz de acompanhar a curvatura
+da pá e possibilitar diversas opções de posicionamento. Como o material da pá
+não possui alta permeabilidade magnética (Inox 420), a solução de fixação seria
+por ventosas ativas e com material específico para suportar as grandes
+variações de temperatura que a pá pode alcançar (temperatura ambiente a
+$100^oC$ durante a metalização).
+
+Uma abrangente pesquisa de robôs comerciais industriais de pequeno porte apontou
+que há manipuladores com carga entre 12 e 20 kg e velocidade necessários,
+sendo o LBR da Kuka o que possui melhor benefício peso/alcance, 30 Kg e 820 mm,
+respectivamente. %Para este manipulador, a metalização deverá ser
+%realizada em, pelo menos, quatro etapas com quatro trilhos diferentes e
+%customizados, e placas de sacrifício para evitar mau aplicação da metalização
+%durante as trocas de sentido na movimentação do robô.
+
+A fixação de um trilho na pá apresenta diversas complexidades, como: a
+necessidade de manualmente instalar/desinstalar o sistema trilho/robô diversas
+vezes em cada pá; o projeto do trilho customizado e flexível; e ventosas ativas
+especiais que suportam variação de temperatura.
+
+A alternativa para se evitar o contato com a pá consiste em um único trilho
+retilíneo fixado por bases magnéticas ou solda, no solo do aro câmara. Como o
+robô não possui alcance de toda a pá, há, ainda, a necessidade de posições
+verticais diferentes. A pá pode ser processada em movimentos circulares ou
+lineares e, em ambos os casos, o manipulador ficará responsável pela velocidade,
+posição e orientação do processo. A troca de sentido de movimento deverá
+ocorrer fora da pá ou devem ser utilizadas placas de sacrifício. A
+
+Esse tipo de abordagem simplifica a movimentação do robô no
+trilho, uma vez que o trilho seria totalmente reto, e possibilitaria a
+metalização de um dos lados das quatro pás com uma única instalação de base.
+Porém, mesmo nesta solução, a altura do trilho deverá ser ajustada três vezes para
+cada lado de pá.
+
+Em ambos os sistemas propostos, é necessária a implementação de um sistema de
+localização do robô em relação à pá, tornando possível a geração de um
+planejamento de trajetórias para o processo de metalização. O sistema de
+localização pode ser concebido por sensores externos
+ao robô (câmeras e outros), ou instalados no próprio manipulador/base.
+
+\textbf{Conclusão da solução por robôs em trilhos}
+
+A solução com trilho externo se mostrou vantajosa em comparação ao robô em
+trilho customizado acoplado à pá, devido à complexidade e intervenções
+manuais. Há a possibilidade de utilizar um manipulador industrial, tornando o
+foco do projeto em processamento de sinais, mapeamento, localização e controle,
+além da construção do trilho. Porém, a montagem da estrutura e a instalação de
+todo o sistema atrás da pá podem ser custosas, sendo esta ainda uma solução
+considerada complexa.

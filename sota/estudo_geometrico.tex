@@ -1,0 +1,147 @@
+\subsection{Estudo geométrico}\label{sec::estudo_geom}
+O estudo geométrico é uma avaliação simples de alcance dos manipuladores
+industriais no ambiente do aro câmara. Tem como objetivo verificar se o
+manipulador consegue percorrer todos os pontos da pá dentro das restrições da
+tarefa HVOF, assumindo a pá planar, e diferentes posições de base. O estudo
+leva em consideração as seguintes posições para o manipulador: escotilha
+superior e base móvel; manipulador em frente à pá e base móvel verticalmente;
+manipulador entre as pás e base móvel verticalmente.
+
+Assumimos $R = 3.95 m$ e $R_m = 3 m$, onde $R$ é a distância do centro do cone à
+superfície do aro câmara, e $R_m$ é o comprimento da pá. Logo, podemos
+inferir o comprimento do aro câmara $P = 2*\pi *R = 24.81 m$. Em relação ao
+centro do cone, o setor circular que cada pá ocupa tem um ângulo, em radianos,
+de $\beta = \frac{R_m*2*\pi}{P} = 0.76$, e a metade do setor circular entre
+as pás tem ângulo $\alpha = \pi/4$, já que elas são simetricamente distribuídas.
+A figura~\ref{pa} mostra os parâmetros acima, onde as pás estão representadas
+como setores circulares roxos e metade da distância entre as pás como setor
+azul.
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=\columnwidth]{figs/estudo/geometrico/pa.png} 
+	\caption{Parâmetros do aro câmara.}
+	\label{pa}
+\end{figure}
+
+Pode-se posicionar a base do manipulador em diferentes valores de $\alpha$, que é
+o mesmo que girar a turbina e alterar a posição da pá. Para $\alpha = 0$, por
+exemplo, o manipulador se encontra em frente à pá, e para $\alpha = \pi/4$ ele está entre as pás.
+
+\subsubsection{Análise geométrica para a escotilha inferior}
+A análise para a escotilha inferior consiste em posicionar o manipulador no
+centro ou entre as pás ($\alpha = 0$ ou $\alpha = \pi/4$) e assumir $\omega =
+\pi/4$ (pá girada $45^o$). No caso em que o
+manipulador se encontra em frente à pá, alcançar todos os pontos da pá  é
+traçar uma circunferência que a envolve, representando
+a área de alcance do manipulador. Após o cálculo desta
+circunferência, deve-se distanciar ortogonalmente a base do manipulador à pá,
+pois este deve estar posicionado de uma maneira que não haja colisões. A
+figura~\ref{paemfrente} mostra a circunferência, cujo raio pode ser encontrado
+analiticamente pelas equações:
+$$\rho ^2 = r^2+R_c^2-2R_crcos(\beta)$$
+$$\rho ^2 = R^2+R_c^2-2R_cRcos(\beta)$$
+onde $R$ é o raio do aro câmara, $r$ é o raio do cone da turbina, $R_c$ é a
+distância do centro da pá ao centro do cone e $\rho$ é o raio da circunferência
+que circunscreve a pá. Obtêm-se  $\rho=1.6387$ e $h=1.0157$, onde $h$ é a altura
+da base do manipulador ($R-R_c$). Observe que $\rho$ é o alcance para o
+manipulador sob a pá, logo temos que supor uma distância $d$ entre o manipulador
+e a pá a fim de evitar colisões. Assumindo diversos valores para $d$, obtemos o
+gráfico~\ref{reach} que mostra o alcance necessário do manipulador versus
+distância que ele se encontra da pá. 
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=\columnwidth]{figs/estudo/geometrico/paemfrente.png} 
+	\caption{Estudo geométrico do manipulador industrial em frente à pá.}
+	\label{paemfrente}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=\columnwidth]{figs/estudo/geometrico/reach.png} 
+	\caption{Gráfico que mostra o alcance necessário do manipulador versus a
+	distância que ele se encontra da pá.}
+	\label{reach} 
+\end{figure}
+
+Para uma posição fixa da base, o manipulador, a uma distância de 1 m
+da pá, necessita ter alcance máximo de 1.7 m para percorrer todos os pontos, se
+considerarmos os 230 mm de distância mínimo entre pá e pistola. Esta é uma
+solução inviável para um manipulador de médio porte e com o payload necessário.
+Portanto, será realizada uma análise mais profunda levando em consideração
+possibilidade de movimentação da base horizontalmente por atuador ou
+manualmente.
+
+\subsubsection{Análise geométrica para a escotilha superior}
+Na escotilha superior, como há restrição em relação ao manipulador (LBR 820), há
+a necessidade de uma base móvel, que possa assumir diversos comprimentos e
+posições. A solução de uma base com dois elos está representada na
+figura~\ref{pakuka}, onde os elos i e j estão representados em verde, o cone
+da turbina representado pela circunferência c, o espaço de trabalho planar do
+manipulador está representado em verde, e a pá representada como um setor
+circular em vermelho.
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=\columnwidth]{figs/estudo/geometrico/kuka.png} 
+	\caption{Estudo geométrico do manipulador industrial Kuka 820 na escotilha
+	superior e base de dois elos.}
+	\label{pakuka}
+\end{figure}
+
+Utilizando notação vetorial, considere: 
+$$\overrightarrow{Z}=(0,0,1)$$
+$$\overrightarrow{X}=(1,0,0) $$
+$$\overrightarrow{Y}=(0,1,0)$$
+$$\overrightarrow{P_0} = (0,R,0)$$
+$$\overrightarrow{P_c}=(0,R-x,0)$$
+$$\overrightarrow{\widetilde{P}} = R_z(-\alpha) \overrightarrow{P_0}$$
+$$\overrightarrow{\overline{\widetilde{P}}}=\frac{\overrightarrow{\widetilde{P}}}{\left \| \overrightarrow{\widetilde{P}} \right \|}$$
+$$\overrightarrow{P_R} =R_{\overrightarrow{\overline{\widetilde{P}}}}(\omega)R_z(-(\alpha+\beta/2)P_0$$
+$$\overrightarrow{v}=R_{\overrightarrow{\overline{\widetilde{P}}}}(\omega)R_z(\beta/2)R_z(-\alpha)\overrightarrow{Y}$$
+$$\overrightarrow{P_a} =R_{\overrightarrow{\overline{\widetilde{P}}}}(\omega)\overrightarrow{Z}$$
+$$P_{r} = P_R\frac{r}{R}+\overrightarrow{P_a}*0.23$$
+$$P_R =P_R+0.23 $$
+
+onde $\overrightarrow{P_0}$ é o vetor do centro do cone ao acesso superior,
+$\overrightarrow{P_c}$ é o vetor do centro do cone ao fim do primeiro elo da
+base i, $\overrightarrow{\widetilde{P}}$ é o vetor do centro do cone da turbina
+ao aro câmara que passa pelo centro da pá,
+$\overrightarrow{\overline{\widetilde{P}}}$ é o vetor unitário correspondente a
+$\overrightarrow{\widetilde{P}}$, $\overrightarrow{P_R}$ é o vetor do centro do cone da turbina
+ao extremo superior da pá, $\overrightarrow{v}$ é um vetor unitário no plano da
+pá e no extremo superior, $\overrightarrow{P_r}$ é o vetor do centro do cone da
+turbina ao extremo inferior da pá ,$\overrightarrow{P_a}$ é um vetor unitário
+normal à pá, $R_z$ é rotação em torno de $\overrightarrow{Z}$, $\omega$ é o
+ângulo de rotação da pá em seu próprio eixo (valor que pode variar de $0$ a
+$45^o$), $x$ é o comprimento do elo i e $y$ é o comprimento do elo j.
+
+O projeto consiste em encontrar o valor de $y$ (comprimento do segundo elo da
+base) para diferentes valores de $x$ (elo i). O elo possui uma junta
+prismática, portanto, $y$ assume valores mínimos para alcançar o extremo
+inferior da pá, e máximos para alcançar o extremo superior da pá.
+Utilizando as dimensões do Kuka LBR, resolve-se a equação: 
+$$y = max (\left \|
+\overrightarrow{P_R}-\overrightarrow{P_c} \right \|, \left \|
+\overrightarrow{P_r}-\overrightarrow{P_c} \right \|) - 1.18$$ 
+Com ajuda computacional e percorrendo todos os valores de  $\alpha$ e $x$,
+obtém-se o gráfico~\ref{yminsmallhatch}. Em vermelho, temos o comprimento máximo do elo e,
+em azul, o comprimento mínimo, recolhido, do elo com junta prismática. Observe
+que para valores de $\alpha$ menores que 13.86 graus não há solução viável e,
+para valores entre 14 e 40 graus o elo estendido é maior que o dobro do elo
+reduzido, o que dificulta a solução também.
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=\columnwidth]{figs/estudo/geometrico/yminsmallhatch.png} 
+	\caption{Estudo do comprimento mínimo e máximo para o segundo elo da base.}
+	\label{yminsmallhatch}
+\end{figure}
+
+A análise puramente geométrica não considera o formato real curvilíneo da pá e
+é apenas uma análise de alcance de extremos. Isso não garante que a área de
+trabalho do manipulador cubra todos os pontos da pá e ainda não considera
+algumas colisões com o ambiente e/ou própria base e manipulador. O estudo do
+espaço de trabalho por simulações se faz necessário para garantir a viabilidade
+dos manipuladores industriais.

@@ -1,0 +1,166 @@
+\subsection{Robôs escaladores}\label{sota_climbers}
+Robôs escaladores são sistemas capazes de sustentar seu próprio peso contra a
+gravidade, movendo-se em simples ou complexas estruturas geométricas, como
+paredes, tetos e telhados, palhetas de turbinas e plantas nucleares.
+Essa classe de robôs oferece eficiência operacional em ambientes
+de alta periculosidade, sendo utilizados visando saúde e segurança dos
+trabalhadores, como em inspeção e limpeza de arranha-céus, diagnóstico de
+tanques de armazenamento em plantas nucleares, solda e manutenção de cascos de
+navios e palhetas de turbinas \citep{armada2003application}. 
+
+Os grandes desafios nos projetos de sistemas escaladores são mobilidade e
+aderência, além de consumo de energia, capacidade de carga e peso. Em
+\cite{modular} e \cite{climbsurv}, os robôs escaladores são divididos em tipos
+de locomoção:
+pernas; como andador; utilizando segmentos deslizantes; rodas; esteiras; avanço
+pendurado por braços; por cabos; e biomimética. E categorias de adesão: sucção
+ou pneumática; magnética; eletrostática; química; preensão; e híbrida.
+
+No caso específico deste estudo da arte, destacam-se os robôs escaladores com as
+seguintes aplicações:
+
+\begin{itemize}
+  \item \emph{Navios e turbinas}: RRX3 para soldagem
+  \citep{rrx3}, \emph{Climbing Robot for Grit Blasting} para limpeza
+  \citep{crgb} e ICM Robot para inspeção \citep{icm};
+  \item \emph{Industrial}: ROMA II \citep{roma} e
+  CROMSCI \citep{CROMSCI}, ambos para inspeção; 
+ \item \emph{Planta petroquímica}: TRIPILLAR \citep{tripillar} para inspeção.  
+\end{itemize}
+
+O RRX3 (figura~\ref{rrx3}), Daewoo Shipbuilding and Marine Engineering, é um
+robô para a soldagem de casco de navios. Possui adesão por preensão, locomoção transversal utilizando segmentos deslizantes e locomoção
+longitudinal por rodas. Possui um manipulador de 1.5 m com três juntas
+prismáticas e três juntas de revolução (3P3R) para a operação de soldagem. 
+
+As características principais do robô são: base e manipulador com
+capacidades de carga de 120 kg e 5 kg, respectivamente; manipulador com precisão
+milimétrica e efetuador de baixa velocidade; robustez para operar em ambiente de
+alta periculosidade; opera instrumento de solda; e locomoção transversal é
+restrita à aplicação.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8.4cm]{sota/figs/climbers/RRX3_moving.jpg}
+\caption{Translação horizontal do robô RRX3.}
+\label{rrx3}
+\end{figure}
+
+O \emph{Climbing robot for Grit Blasting} (figura~\ref{grit}), University of
+Coruna, é um robô para jateamento abrasivo em navios. O robô utiliza duas plataformas deslizantes com sistema de adesão por
+ímã magnético. Os módulos apresentam movimentação relativa entre si e pode rotar
+para compensar as curvaturas do casco do navio ou desviar de objetos. 
+
+As características principais do robô são: base com
+capacidade de carga de sistema abrasivo semelhante a HVOF; base com
+locomoção de precisão milimétrica; locomoção ampla, mas não aplicável a
+estruturas complexas; e não possui manipulador, sendo necessário percorrer todo
+o casco.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8.4cm]{sota/figs/climbers/grit.png}
+\caption{Climbing robot for Grit Blasting}
+\label{grit}
+\end{figure}
+
+\emph{The Climber} (figura~\ref{icm}), ICM Robotics, é um robô para inspeção de
+turbinas eólicas, remoção de revestimento, limpeza de superfície, e aplicação de revestimento.
+Possui adesão pneumática (sucção) e locomoção por esteiras. 
+
+As características principais do robô são: base com capacidade de carga de 25
+kg; base com locomoção de precisão milimétrica; manipulador modular pode ser
+acoplado à base; manipulador de dimensão reduzida e baixa velocidade; e
+locomoção apresenta restrição a algumas curvaturas acentuadas.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8.4cm]{sota/figs/climbers/icm.png}
+\caption{Robô The Climber da ICM Robotics}
+\label{icm}
+\end{figure}
+
+O ROMA II (figura~\ref{roma2}), Universidade Carlos II de Madrid, é um robô para
+inspeção de ambientes complexos. A sua tecnologia de adesão é pneumática (sucção) e
+locomove-se como uma lagarta (biomimética). Sua movimentação e planejamento de
+trajetória são realizados de maneira ótima de forma a garantir estabilidade e
+evitar obstáculos. 
+
+As características principais do robô são: base com grande capacidade de carga;
+base com locomoção de precisão milimétrica; não possui manipulador; locomoção em
+ambientes de grande complexidade.
+
+\begin{figure}[ht]
+\centering
+%\includegraphics[width=8.4cm]{sota/figs/climbers/roma2.jpg}
+\includegraphics[width=4.2cm,height=4.2cm]{sota/figs/climbers/roma2.jpg}
+\caption{ROMA II.}
+\label{roma2}
+\end{figure}
+
+CROMSCI (figura~\ref{cromsci}), Kaiserslautern University of Technology, é um
+robô autônomo para inspeção de grandes paredes de concreto, como pilares de pontes, barragens. Seu
+sistema de adesão é composto por sete câmaras de vácuo (sucção), com um sistema
+de controle por válvulas e sensores de pressão para reagir rapidamaente a
+condições adversas. Locomove-se com rodas omnidirecionais para locomoção.
+
+As características principais do robô são: base com pouca capacidade de
+carga; base com locomoção de precisão milimétrica; não possui manipulador; e
+apresenta baixa velocidade.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8.4cm]{sota/figs/climbers/cromsci.jpg}
+\caption{Robô CROMSCI.}
+\label{cromsci}
+\end{figure}
+
+TRIPILLAR (figura~\ref{tripillar}), École polytechnique fédérale de Lausanne, é
+um robô escalador de pequeno porte (96 x 46 x 64 mm) desenvolvido para a inspeção de plantas
+petroquímicas. Utiliza um sistema como pernas de lagarta magnéticas em um
+formato triangular. Locomove-se por esteiras.
+
+As características principais do robô são: base com pouca capacidade de
+carga; base com locomoção de precisão milimétrica; sistema robusto a aplicações
+em ambientes de alta periculosidade; sistema de controle simples; robô de
+pequenas dimensões; não possui manipulador; sistema ainda não testado em estruturas geométricas complexas.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8.4cm]{sota/figs/climbers/tripillar.png}
+\caption{Robô TRIPILLAR.}
+\label{tripillar}
+\end{figure}
+   
+Os robôs escaladores são utilizados em diversas aplicações e possuem diferentes
+soluções de aderência e locomoção, como foi exposto nesta subseção. Não há,
+até o momento, um robô escalador que possui todas as características
+exigidas para a tarefa de HVOF em pás de turbinas, porém a adaptação de
+alguns desses sistemas, como \emph{The Climber} da ICM Robotic, pode gerar
+soluções completas.
+
+As vantagens e desvantagens para solução de robôs escaladores são:
+
+\textbf{Vantagens:}
+\begin{itemize}
+  \item Facilidade de instalação;
+  \item Manipulador de pequenas dimensões, já que o robô se movimenta sob a pá
+  da turbina;
+  \item Base de pequenas dimensões;
+  \item Pouco peso;
+  \item Autonomia durante a operação em uma pá; 
+\end{itemize}
+
+\textbf{Desvantagens:}
+\begin{itemize}
+  \item Sistema de locomoção complexo com desvio de obstáculo e planejamento de
+  trajetória;
+  \item Desafio mecânico na construção de uma estrutura capaz de sustentar seu
+  peso mais o manipulador com sistema HVOF;
+  \item Robô deve ser manualmente instalado em cada pá ou um complexo sistema
+  de locomoção por braços deverá ser desenvolvido;
+  \item Sistema de segurança do robô deverá ser bem desenvolvido;
+  \item Bateria limitada ou sistema de gerenciamento de umbilical para robôs
+  móveis;
+\end{itemize}

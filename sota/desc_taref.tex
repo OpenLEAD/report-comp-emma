@@ -1,0 +1,58 @@
+\subsection{Descrição das tarefas do robô}
+\label{desc_taref}
+Esta subseção descreve as tarefas básicas do robô para o revestimento de
+turbinas \textit{in situ}. Em linhas gerais, o robô a ser desenvolvido deve ser
+capaz de realizar a tarefa de revestimento tal qual seria feita caso a pá não estivesse instalada na
+tubina e de uma maneira autônoma. A pá, antes de ser submetida ao
+processo de revestimento, deve estar em conformidade com o gabarito, perfil hidráulico de uma pá
+intacta. Portanto, uma tarefa do robô é realizar o mapeamento do perfil
+hidráulico, construir um modelo 3D e analisar imperfeições.
+
+Em caso de deformações, causados por cavitação e abrasão, estas precisam
+ser removidas manualmente ou de forma automatizada, possivelmente por
+soldagem. A tarefa de soldagem pode
+ser realizada por operador, manualmente, por não possuir todas as restrições
+da tarefa de revestimento (velocidade, precisão, carga e etc), porém o ambiente
+pode dificultar a operação de forma que a execução por um robô seja
+indispensável. 
+
+Após as pás estarem de acordo com o gabarito, faz-se a
+identificação do desgaste do revestimento, medindo sua espessura em pontos
+pontos específicos sobre a superfície da pá. Manualmente esse
+processo é realizado eficientemente em 10 min, justificando a não necessidade de
+esta ser uma tarefa do robô. 
+
+Em caso de necessidade de aplicação
+de novo revestimento, é necessária a remoção do revestimento antigo por
+jateamento, a fim de deixar a superfície rugosa e aumentar sua aderência. A
+tarefa de jateamento é atualmente realizada maualmente, mas também pode ser
+realizada pelo robô. Como ambos os lados da pá são revestidos, o jateamento deve
+ser realizado em ambos os lados. Vale ressaltar que, em teoria, pode-se aplicar revestimento por metalização sem retirar o último revestimento,
+porém esse processo ainda se encontra em fase de estudos na Rijeza.
+%Segue-se o exemplo de empresas de aviação, onde existe a
+%prática de retirar todo o revestimento antigo antes de aplicar o novo.
+
+Por fim, o robô deverá aplicar o revestimento como
+forma de prevenir o dano causado pelos fenômenos abrasivos. O robô projetado
+para fazer o revestimento precisa preencher todos os requisitos discutidos na
+subseção~\ref{sec::desc_hvof} e ser adaptável ao ambiente, cujos as restrições
+são discutidos na subseção~\ref{sec::desc_contex}. 
+
+Das tarefas a serem relizadas, são destacadas as seguintes:
+Tarefas que podem ser executadas manualmente:
+\begin{itemize}
+  \item Inspeção e análise de danos na pá, tanto para reparo quanto para
+  revestimento.
+  \item Reparo.
+  \item Montagem do sistema.
+  \item Jateamento da superfície.
+\end{itemize}
+
+Tarefas que poderão ser executadas pelo robô:
+\begin{itemize}
+  \item Modelar o perfil hidráulico.
+  \item Calibração.
+  \item Jateamento.
+  \item Reparo (soldagem e esmerilhamento).
+  \item Revestimento por metalização.
+\end{itemize}
