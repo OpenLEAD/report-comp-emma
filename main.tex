@@ -20,7 +20,6 @@ draft=false]{report}%openany,version=last
 \usepackage[position=b]{subcaption}
 \usepackage{wrapfig}
 \usepackage{natbib}        % required for bibliography
-\usepackage{ragged2e}
 
 \newcommand*{\fancychapterstyle}{%
   \titleformat{\chapter} % command
@@ -96,8 +95,7 @@ draft=false]{report}%openany,version=last
 
 \fancychapterstyle
 
-\twocolumn
-\justify
+
 \chapter{Resumo gerencial}\label{chap::resumo}
 \include{resumo}
 
@@ -110,7 +108,7 @@ draft=false]{report}%openany,version=last
 \input{sota/SOTA}
 \input{sota/Projetos}
 \input{sota/bases}
-\input{sota/conclusao}
+%\input{sota/conclusao}
 
 % ---------------------------------------------------------------------------
 % \includepdf[pages=1-,
@@ -165,7 +163,7 @@ draft=false]{report}%openany,version=last
 
 \chapter{Estudo de viabilidade técnica}
 
-\input{detail/Introduction}
+%\input{detail/Introduction}
 \input{detail/estudo_viatec} 
 \input{detail/Localizacao}
 % \input{apendice}
@@ -302,6 +300,9 @@ draft=false]{report}%openany,version=last
 
 
 \fancyappendixstyle
+
+\chapter{Pesquisa de Mercado Manipuladores}
+\include{detail/apendice}
 
 
 \chapter{Relatórios de Viagem}
