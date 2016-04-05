@@ -1,0 +1,28 @@
+\subsection{Planejamento de trajetória}
+
+O conhecimento de todas as regiões que podem ser recobertas pelo robô ajudam na
+validação do posicionamento do robô. Porém, ainda é necessário descrever o
+caminho a ser percorrido pelo efetuador no espaço de trabalho de maneira a
+cumprir os requisitos de revestimento e o respectivo caminho percorrido no espaço de juntas.
+
+A definição desse caminho é facilitada pelo conhecimento analítico da
+superfície. A partir dessa descrição são definidos, sobre a pá, uma série
+de faixas que segmenta a pá, que serão chamadas de
+paralelos.
+
+Os paralelos são espaçados de 3 em 3 milímetros para o cumprimento das exigência
+de revestimento e são dispostos de forma a não possuirem intersecção entre si. A
+união dos paralelos (considerando uma faixa de 3mm entre eles) inclui todos os
+pontos da pá, garantindo seu completo recobrimento.
+
+O deslocamento da ferramenta de revestimento  pelo caminho definido por dois
+paralelos é feito por meridianos. Isto é, segmentos que
+conectam extremidades dos paralelos e não tem função defininda no processo de
+metalização. A vávula deve estar fechada e o revestimento interrompido
+durante o tempo que o efetuador percorre todo o meridiano. A razão de existência
+dele é meramente definir uma maneira de levar o efetuador de um paralelo a
+outro.
+
+\input{method/controle_superficie}
+\input{method/controle_paralelos}
+\input{method/controle_meridianos}

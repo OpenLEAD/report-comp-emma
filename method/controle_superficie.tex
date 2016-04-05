@@ -1,0 +1,57 @@
+\subsubsection{Modelagem da superfície}\label{modelagem}
+
+Existem diversas abordagens matemáticas para descrição de superfícies como:
+Parametrização Polinomial; Polinômios em três variáveis; Superfícies de
+Bézier (\cite{farin2002curves}); Splines e NURBS (\textit{Non-uniform
+rational B-spline}); Subdivisão de superfícies (\cite{peters2008subdivision}); Malhas
+poligonais.
+
+Todas essas formas de representar uma superfície, com excessão das malhas,
+recaem em alguma instância em uma descrição polinomial. Dentre essas a única
+descrição que ocorre de maneira implícita é por polinômios em três variáveis,
+descrevendo uma variedade algébrica bidimensional, enquanto as demais são
+parametrizações da superfície. 
+
+Por simplicidade, fácil manipulação algébrica e implementação, a descrição
+puramente polinomial (implícita) foi escolhida como abordagem inicial. De
+maneira geral a superfície é descrita como o conjunto solução sobre os
+números reais da equação polinomial ($f(x,y,z)=0$) de grau $N$, dito grau da
+superfície, em $x$,$y$ e $z$:
+\[\sum\limits_{i+j+k \leq N}^{} C_{i,j,k}x^iy^jz^k = 0\]
+
+Os coeficientes $C_{i,j,k}$, então, são aqueles que descrevem da superfície.
+Devido a restrição do grau do polinômio, o número de coeficientes é
+$\binom{N+3}{3}$. Podendo ser vistos como coordenadas da superfície num espaço
+projetivo de dimensão igual ao número de coeficiente,
+$\mathbb{P}^{\binom{N+3}{3}}$, em outras palavras a superfície é invariante a
+escalamento dos coeficientes.
+
+Experimentalmente foi indentificado que um polinômio de quarto grau é suficiente
+para aproximar toda uma região de interesse da pá, onde será feito o revestimento
+para uma posição do robô, com erro submilimétrico. Nesse caso, o número de
+coeficientes que devem ser identificados é $\binom{7}{3}$, ou seja, 35.
+
+Com base no artigo de \cite{juttler2002least}, a conversão da descrição da
+superfície de nuvem de pontos para uma descrição analítica foi feita utilizando
+a informação da direção da normal à superfície em cada ponto, ou seja, a superfície analítica deve não apenas passar
+próxima aos pontos da nuvem como deve também ter seu vetor normal similiar à
+normal desses pontos.
+
+Explorando o fato que polinômio são lineares em seus coeficientes, um sistema
+superdeterminado, a ser resolvido por mínimo quadrados(\textit{curve fitting}
+\cite{arlinghaus1994practical}) , foi contruído a partir do cálculo dos termos
+do polinômio em cada ponto da nuvem (fazendo $f(x,y,z)=0$) e da avaliação da
+normal em cada ponto, que deveria concordar com o gradiente do polinômio (ou
+seja $\nabla f(x,y,z) = \overrightarrow{n}$, onde $\overrightarrow{n}$ é a
+normal no ponto $(x,y,z)$ da nuvem), dessa forma o peso dado aos vetores normais
+das amostras é igual ao peso das amostras.
+
+%Elael Modelo Polinomial multivarial -> extrapolado para a pá inteira
+% PREMISSAS!!
+
+
+% 
+% Splines
+% Bézier Surface
+% Runge's phenomenon
+% Multivariate Polynomial fitting

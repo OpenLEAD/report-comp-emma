@@ -1,0 +1,506 @@
+\section{Solução da calibração}
+
+Como especificado em EMMA-DETAIL, o sensor a ser adquirido pelo projeto é o Faro
+Focus X330.
+Esse dispositivo consiste em um \textit{laser scanner} e aquisita a medida da
+distância percorrida pelo feixe $laser$ emitido pelo sensor até o obstáculo mais próximo. A partir de um
+espelho rotativo e um motor acoplado a sua base, o Focus X330 é capaz de
+aquisitar pontos em $360^o$ na horizontal e $300^o$ na vertical. O ambiente e
+modelo de cada pá serão, então, armazenados como uma estrutura de dados chamada nuvem de
+pontos, isto é, uma representação tridimensional do espaço cartesiano, na qual cada distância medida pelos
+sensores a partir de sua origem representa uma coordenada x y z.
+Entretanto, essa representação não é capaz de diferenciar, ou classificar, os
+limites de cada objeto presente na cena, ou seja, não é possível determinar
+\textit{a priori} qual conjunto de pontos pertence a cada elemento que se deseja
+identificar para realizar a calibração.
+
+
+A identificação de cada conjunto, ou \textit{cluster}, de pontos é importante
+para que a posição e orientação de cada objeto de interesse seja determinada e,
+assim a transformação entre o sistema de coordenadas de cada objeto seja
+calculada. Esse processo necessita, então, do estudo e implementação de
+algoritmos para a análise da nuvem de pontos, identificação dos elementos
+necessários, extração de suas respectivas posições e, finalmente, cálculo da
+transformada entre as posições.
+
+Dependendo das características de cada objeto a ser identificado e da
+possibilidade de implementação de uma estrutura de apoio para facilitar a sua
+identificação, podem ser utilizados diferentes métodos e estratégias de
+identificação e localização, que serão exploradas a seguir.
+
+\subsection{Reconhecimento do Robô}
+
+O Robô é uma estrutura que a idenficação pode ser facilitada pelo uso de
+padrões de fácil reconhecimento (como esferas e padrões de xadrez, figuras
+\ref{fig::sphere_rec} e \ref{fig::checkerboard_rec}), pois a
+introdução de alterações na base do robô podem ser realizadas de maneira
+estruturada e controlad, na etapa de construção do sistema, assegurando assim
+uma calibração entre o posicionamento dos marcadores e o manipulador.
+
+
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.95\columnwidth]{method/figs/calibracao/sphere_rec}
+   \caption{Exemplo de esfera utilizada para reconhecimento. Fonte:
+   http://shop.talwin.net/}
+   \label{fig::sphere_rec}
+\end{figure}
+
+
+
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.95\columnwidth]{method/figs/calibracao/checkerboard_rec}
+   \caption{Exemplo de padrão de xadrez utilizado para renhecimento.\\ Fonte:
+   http://stereomorph.blogspot.com.br/}
+   \label{fig::checkerboard_rec}
+\end{figure}
+
+
+Devido à baixa iluminação ambiente dentro do circuito hidráulico, a opção
+mais simples é o uso de nuvem de pontos sem identificação de cor. Ou seja, o
+reconhecimento se dará apenas pelo formato. Isso restringe o uso de padrões de
+xadrez e o foco se voltará, então, para o uso de formatos geométricos. Em
+especial o mais simples objeto de três dimensões: a esfera.
+
+O reconhecimento de formas geométricas simples em três dimensões é um assunto
+já razoavelmente explorado na literatura. Dentre eles pode-se destacar 2
+métodos: \textit{RANSAC} e \textit{Hough Transform}.
+
+\subsubsection{RANSAC}
+O método RANSAC (acrônimo para \textit{``RANdom SAmple Consensus"},
+\textit{consenso por amostragem aleatória} em tradução livre) é um método iterativo que tem como
+premissa a presença de \textit{outliers} (elementos fora do corpo principal) na
+amostra e objetiva a identificação dos parâmetros matemáticos que descrevem o
+objeto geométrico em questão \cite{ransac}. É o método
+disponível na amplamente utilizada biblioteca de processamento de nuvem de pontos ``PCL''. 
+
+
+Esse método consiste na seleção aleatória de pontos para serem considerados como
+partes integrantes do corpo principal (no caso, uma esfera). Dado um subconjunto
+inicial de pontos, são calculados os parâmetros da esfera (coordenadas do centro
+da esfera e seu raio). A cada iteração do algoritmo, os demais pontos do
+conjunto original são julgados como pertencentes ou não à esfera estimada e
+novos parâmetros são calculados para a esfera que represente o novo subconjunto
+de pontos. O erro do modelo é inferido
+a partir dos pontos que foram considerados como fazendo parte da esfera e uma esfera reconstruída pelos parâmetros calculados. O processo
+então é repetido um número artrário de vezes, e se mantém armazenado o modelo
+que obteve menor erro.
+
+Um dos principais pontos negativos do RANSAC é que ele tem como premissa a
+presença de apenas um corpo principal, ou seja, apenas uma esfera. Isso implica
+em um tratamento especial quando temos mais de uma esfera no ambiente.
+
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.95\columnwidth]{method/figs/calibracao/ransac}
+   \caption{Exemplo de reconhecimento de uma linha em 2 dimensões usando
+   RANSAC. (Fonte: \cite{ransac})}
+   \label{fig::ransac}
+\end{figure}
+ 
+ \subsubsection{Transformada de Hough 3D}
+Anos de pesquisa em reconhecimento de objetos geométricos de duas dimensões
+levaram ao desenvolvimento e aprimoramento de técnicas basedas em ``Transformada
+de Hough''. Essas técnicas tem sido recentemente adaptadas para o universo de
+três dimensões (ver \cite{hough2014}) e adequadamente chamada de Transformada
+de Hough 3D.
+
+O método consiste em tranformar cada ponto do espaço 3D em uma variedade
+mergulhada no espaço quadridimensional dos parâmetros da esfera ( x, y e z do
+centro mais r do raio). A variedade se identifica com todas as possiveis esferas
+que contém aquele ponto. O espaço de parâmetros é então restrito dentro de
+certos limites e quantizado por razões de implementação (os recursos
+computacionais são finitos). É definido então um acumulador, basicamente uma
+função que conta quantas variedade interceptam determinada região discretizada
+do espaço de parâmetros. Um algorítmo de reconhecimento de picos é aplicado
+sobre o espaço de parâmetros (com as varidade já mergulhadas nele) para detectar
+qual o conjunto de parâmetros que está melhor descrevendo um maior número de
+pontos. O algorítmo pode ser utilizado para reconhecer mais de um pico e, assim,
+identificar a presença de mais de uma esfera na nuvem de pontos (exemplo na
+figura \ref{fig::hough}).
+
+A dificuldade no uso do método é seu custo computacional, mas existem soluções
+que exploram amostragens estatísticas para reduzir esse esforço.
+
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.95\columnwidth]{method/figs/calibracao/hough}
+   \caption{Exemplo de reconhecimento de duas linhas em 2 dimensões usando
+   Transformada de Hough. Na esquerda estão pontos que compõem as duas retas, na
+   direita uma sobreposição das variedades referentes a cada ponto das retas
+   (mergulhadas em um espaço paramétrico bidimensional). Os pontos mais
+   brilhantes refletem os picos referentes aos parâmetros que melhor descrevem as duas retas. (Fonte: 
+   \url{https://en.wikipedia.org/wiki/Hough\_transform})}
+   \label{fig::hough}
+\end{figure}
+
+Tendo conhecimento da posição de quatro esferas, é possivel identificar
+unicamente a posição de um corpo preso rigidamente ao conjunto de esferas. Em outras palavras, consegue-se a
+transformada entre origem do sistema de coordenadas (tipicamente no sensor) e o robô. Para descobrir a trasnformada entre o robô e a pá (posição relativa entre eles) falta identificar a
+transformada entre a origem e a pá, esse caso será explorado na próxima seção.
+
+
+\subsection{Calibração da pá}
+
+Para a identificação e localização das pás das turbinas não é possível a
+utilização de nenhum artifício de apoio que facilite o processamento da nuvem de
+pontos. A instalação de qualquer um desses aparatos não pode ter precisão
+garantida nas operações de campo, pois necessitaria também de calibração a
+cada utilização, retirando assim o propósito do método. 
+
+Portanto, para a localização das pás é
+necessário explorar as características espaciais intrínsecas à superfície do
+próprio objeto e identificá-las na nuvem de pontos do ambiente. O objetivo
+principal nessa etapa do processo é, então, identificar um conjunto mínimo de
+características do objeto que o represente unicamente com um baixo grau
+de ambiguidade e sem exigir um esforço computacional elevado.
+
+A escolha do tipo de característica a se usar é uma decisão fundamental para a
+eficiência do processo e tem sido alvo de estudos na literatura para a análise
+e reconhecimento de imagens 2D, como imagens RGB de câmeras e mais recentemente
+também para imagens 3D. 
+
+Uma boa representação de \textit{point feature} deve ser capaz de capturar as
+mesmas características locais da superfície na presença de:
+
+\begin{itemize}
+  \item \textbf{Transformadas} -  rotações e translações 3D nos dados não devem
+  influenciar a estimação dos descriptors;
+  \item \textbf{Variações na densidade de amostragem} - em princípio, uma de
+  superfície amostrada mais ou menos densamente deve ter a mesma assinatura característica do vetor
+  \item \textbf{Ruído}
+\end{itemize}
+
+O reconhecimento de objetos em aplicações robóticas também vem recebido
+grande atenção, principamente com o crescimento da robótica móvel e em ambientes
+não estruturados, onde é necessário identificar e localizar os objetos a serem
+manipulados em cada tarefa. O problema é enfrentado basicamente utilizando-se
+duas abordagens: analisar os dados 3D ou realizar algum tipo de processamento e
+projeção para se trabalhar com imagens 2D, utilizando as técnicas mais maduras
+desse tipo de imagem.
+
+
+Nesta última categoria, a técnica
+mais usada consiste em converter as informações tridimensionais em \textit{Range
+Images}, na qual é realizada uma projeção a partir de um ponto de vista (geralmente o do sensor) e utiliza escala
+de cores ou cinza para representar a distância, ou seja, quanto mais escuro o
+objeto na imagem, mais longe ele se encontra. É importante reassaltar que esse
+tipo de método introduz perdas de informação ao se realizar projeções e é
+sensível à escolha do ponto de vista escolhido. 
+
+A escolha do descritor a ser utilizado depende da aplicação e deve ser estudada
+a melhor opção para a solução proposta. Aplicações semelhantes envolvendo
+identificação de objetos no ambiente tridimensional, mas sem localizá-los, e
+utilizando diferentes descritores podem ser encontradas em
+\cite{Bayramoglu2010,Hetzel2001,Chen2007}. Uma comparação dos descritores
+utilizados para reconhecimento de objetos 2D e 3D pode ser encontrado em
+\cite{Zaharia2004, Weber2014}.
+
+Após o reconhecimento do objeto, é necessário identificar a sua posição.
+Em \cite{Steder2009}, o alinhamento é realizado utilizando-se a própria
+\textit{Range Image} e a informação de profundidade presente na mesma. Por outro
+lado, em \cite{Nuchter2005} a região onde o objeto identificado está presente é
+selecionada e, por meio de \textit{raycasting} o conjunto de pontos da nuvem
+pertecentes à região identificada na \textit{Range Image} é reprojetado. Após
+essa segmentação, é utilizado um algoritmo de alinhamento como o ICP. 
+
+
+Entretanto, no contexto da solução proposta, o formato original da pá do rotor é fixo para cara cada turbina, ou
+seja, uma vez que definida em qual turbina será realizada a manutenção, é possível fornecer \textit{a priori} qual tipo de pá será metalizada e suas
+características. Essa característica possibilita descartar a necessidade de comparação e busca de
+diversos modelos, reduzindo assim a complexidade computacional final do
+algoritmo. Portanto, é possível armazenar uma representação de diferentes pás e
+fornecer, como entrada do sistema, o modelo correto de acordo com o tipo de turbina que
+está sendo inspecionada. O processo final consiste, então, no correto
+posicionamento e alinhamento entre o modelo armazenado e a instância real do
+objeto, ou mais especificamente a pá.
+
+Os desenhos técnicos das pás, não fornecem informações suficientes
+sobre o seu perfil hidráulico e, para fins práticos, os modelos serão adquiridos
+a partir da inspeção \textit{in situ} de uma turbina em condições de conservação
+que não apresente danos. Esse procedimento necessita ser realizado apenas uma
+vez para cada modelo. 
+
+A partir da suposição que a pá se encontra dentro do campo de visão do sensor
+$laser$, determinar a posição da pá consiste em posicionar a nuvem de pontos do
+modelo de forma que ocorra uma sobreposição entre os pontos do modelo e da cena
+e ambos conjuntos de pontos tenham as mesmas características, ou seja,
+representem o mesmo objeto. A técnica a ser utilizada é denominada
+\textit{correspondence grouping}. 
+
+
+\subsubsection{\textit{Correspondence Grouping}}
+ 
+O método proposto por \cite{Tombari2010a}, se baseia na extração de
+\textit{features} ou características tridimensionais locais para pontos de
+interesse e identificar um conjunto de correspondências entre o modelo 3D e o a
+cena analisada, no caso da aplicação do projeto EMMA as corresponências entre a
+o modelo da pá e a turbina. 
+
+Para reduzir os cálculos necessários, é possível realizar uma amostragem na
+nuvem de pontos e computar os descritores de cada caracteŕistica apenas para
+pontos de interesse, tanto no modelo quanto na cena. Uma vez que ambos os
+conjuntos de descritores foi calculado, deve-se então determinar as
+correspondências entre os dois conjuntos. Pode-se utilizar, por exemplo, a
+distância euclidiana entre os seus descritores correspondentes como medida
+limite. Cada correspondência é uma evidência que o modelo se encontra na cena. 
+Um acumulador é responsável por contabilizar os votos e um objeto é detectado
+caso haja um número suficiente de votos. É importante ressaltar mesmo sendo
+robusta a oclusões e ambientes com muita densidade de objetos, devido à presença de
+ruído, e a particularidades de cada aplicação, como densidade e resolução das
+nuvem de pontos forncecidas pelo sensor e pelo modelo, é possível a detecção de
+falsos positivos. Para se tratar esse problema é necessário o correto ajuste de
+diversos parâmetros e também a implementação de uma forma eficiente de avaliação
+das hipóteses encontradas pelo algoritmo. 
+
+
+\subsection{Simulação de nuvem de Pontos}
+
+Devido a grande complexidade logística e a necessidade de disponibilidade de
+acesso seco a uma turbina, é indispensável a possibilidade da sintetização de
+dados consistentes e que representem de maneira eficaz as caracteristícas que
+serão encontradas no cenário real de operação. 
+
+\subsubsection{Dados genéricos}
+
+Para um primeiro contato com o funcionamento do método \textit{Correspondence
+Grouping} foram utilizados dados genéricos disponíveis na
+literatura\footnotemark \footnotetext{http://kos.informatik.uni-osnabrueck.de/3Dscans/} e o modelo da pá gerado pelo sensor Faro Focus X330 , durante a viagem de campo
+à Usina Hidrelética de Jirau para o teste de viabilidade técnica desse sensor.
+
+
+A figura \ref{fig::modelo_pa_faro} ilustra o modelo da pá em nuvem de pontos,
+esse modelo é uma representação de $360^o$ da superfície da pá e foi aquisitado em
+campo, sendo assim representa a real leitura final do sensor na aplicação do
+algoritmo de calibração.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/modelo_pa_faro}
+	\caption{Nuvem de pontos da pá aquisitada pelo sensor Faro Focus X330.}
+    \label{fig::modelo_pa_faro}
+\end{figure}
+
+A identificação do objeto na cena e a estimação da sua posição foi testada em
+uma cena de um escritório, como pode ser visualizado na figura
+\ref{fig::pa_cena_gen}. O modelo foi sobreposto em vermelho e não houve uma
+discrepância visível entre a instância presente na cena e o modelo sobreposto. 
+Mesmo com uma diferença de densidade de pontos presente em cada parte da nuvem
+de pontos resultante (modelo é muito mais denso que a cena), foi possível
+realizar a correta localização do modelo. O ajuste dos paramêtros de
+subamostragem necessitaram de maior atenção nesse cenário. Vale ressaltar que o
+algoritmo identificou corretamente uma cópia exata do modelo que foi introduzido
+na cena, não há presença de ruídos ou oclusões no instância da pá presente na
+cena.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/blade_office5}
+	\caption{Exemplo de localização do modelo da pá em uma cena genérica.}
+    \label{fig::pa_cena_gen}
+\end{figure}
+
+\subsubsection{Blensor}
+
+A utilização de dados genéricos é útil para a implementação e testes do
+algoritmo, entretanto não representa as condições reais que serão encontradas
+durante o processo de metalização. A geometria da turbina, da pá, do manipulador
+e também as oclusões geradas pelos elementos presentes necessitam ser simulados
+para um perfeito ajuste do sistema. Para a simulação desses cenários, foi
+utilizado a \textit{toolbox Blensor}\footnotemark
+\footnotetext{http://www.blensor.org} baseada no \textit{software} de criação 3D
+\textit{Blender}\footnotemark, \footnotetext{http://www.blender.org} a qual
+permite a simulação da nuvem de pontos resultante de um sensor em um ambiente
+tridimensional. Os objetos inseridos na cena são sólidos 3D, que podem ser
+projetados utilizando-se as ferramentas do próprio programa ou importados em outros formatos suportados, como a partir do
+Solidworks\textregistered. A Figura \ref{fig::blensor_screen}
+ilustra a utilização do software, assim como o modelo 3D importado da turbina.
+A simulação leva em consideração a distância percorrida pelo pulso emitido, a
+intensidade luminosa retornada ao sensor e o tempo decorrido durante o
+sensoriamento \cite{Gschwandtner2011}, o que fornece uma melhor aproximação da
+resposta do sensor para um ambiente simulado do que simplesmente a utilização de
+uma técnica de \textit{raycast} pura.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/blensor_screen}
+	\caption{Visualização do \textit{Blensor} com o modelo 3D da turbina
+	importado.}
+    \label{fig::blensor_screen}
+\end{figure}
+
+Dentro do ambiente de simulação, é possível a sintetização de dados provenientes
+de diversos tipos de sensores laser, como um laserscanner 2D, o sensor
+Velodyne e sensores do tipo Kinect. Os parâmetros de configuração
+dos sensores também estão disponíveis para ajuste, assim como o seu respectivo
+nível de ruído.
+Sensores que não estão nativamente disponíveis podem ser introduzidos. O sensor Faro Focus X330 não
+pertence a lista de sensores previamente carregados pela ferramenta e teve que
+ser implementado. As especificações técnicas utilizadas estão de acordo com as
+fornecidas pelo fabricante, com exceção do ângulo de visão que foi reduzido para
+diminuir o esforço computacional, sem perda de informação. A figura
+\ref{fig::blensor_faro} ilustra a resposta simulada do sensor implementado
+dentro do ambiente de simulação com a presença do modelo CAD da turbina.
+
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/blensor_faro}
+	\caption{Resposta simulada do sensor Faro Focus X330.}
+    \label{fig::blensor_faro}
+\end{figure}	
+
+
+Caso seja disponibilizado uma descrição do perfil hidráulico da pá, é possível
+também a geração de modelos sem a necessidade de uma inspeção prévia em uma
+unidade geradora, para a aquisição de
+dados sobre a turbina. A figura \ref{fig::modelo_pa} ilustra o ambiente de simulação e a
+nuvem de pontos final para a criação de um modelo a partir de um arquivo
+descritivo. 
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/blensor_pa_sim}
+	\caption{Criação de um modelo a partir de um arquivo descritivo da pá.}
+    \label{fig::modelo_pa}
+\end{figure}
+
+Para representar corretamente as oclusões geradas pelo própria estrutura do
+rotor e das pás, é necessário que as cenas sintetizadas a partir da ferramenta
+tenham o sensor virtual posicionado em posições que representem os locais no
+qual é possível a fixação real do equipamento dentro da unidade geradora. As
+oclusões geradas pelo sistema de metalização também devem ser previstas e simuladas para um
+perfeito ajuste do algoritmo, uma vez que o conjunto do robô e trilhos deve
+estar previamente posicionado para que a calibração entre a pá e o efetuador do
+manipulador seja possível. Para isso, o modelo do manipulador MH12 foi
+importado para dentro do ambiente de simulação, como ilustrado na figura
+\ref{fig::model_mh12} e, em seguida, posicionado entre o sensor e a pá, para
+servir de obstáculos para parte dos feixe laser que atingiriam a pá.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/mh12_model}
+	\caption{Visualização do \textit{Blensor} com o modelo 3D da turbina
+	importado.}
+    \label{fig::model_mh12}
+\end{figure}
+
+A Figura \ref{fig::sim_mh12}
+ilustra a pá sendo corretamente identificada com a presença do manipulador entre
+o sensor e a pá criando uma região de sombra. É possível observar o modelo que
+está sendo comparado à cena na parte esquerda da figura e as linhas verdes
+representam as correspondências encontradas entre os descritores do modelo da pá
+e os encontrados na cena.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/sim_mh12_sp}
+	\caption{Resposta do algoritmo de calibração, com destaque para as
+	correspondências encontradas.}
+    \label{fig::sim_mh12}
+\end{figure}	
+
+
+
+\subsection{Análise de resultados}
+
+Os resultados apresentados pelo algoritmo de calibração não fornecem informação
+da qualidade da transformada encontrada, apenas uma representação visual
+confirmando que o modelo foi aproximadamente posicionado de maneira correta.
+É necessário, então, uma análise mais estruturada dos resultados obtidos, afim
+de se ter uma medida da eficiência apresentada pelo processo de calibração e
+também avaliar se a precisão encontrada está em conformidade com a necessária
+para a realização do revestimento e dentro de uma margem de segurança.
+
+A partir dos dados de simulação, foram sintetizados modelos com os elementos
+posicionados de maneira estruturada, a fim de ser possível medir a discrepância
+entre a tranformação de coordenadas medida e a de referência. 
+
+O processo de criação das nuvem de pontos sintéticas consiste em importar um
+modelo CAD para o ambiente de simulação da ferramenta Blensor em uma posição
+específica relativa ao sistema de coordenadas do sensor simulado. 
+
+Na no teste padrão foram utilizados os seguintes elementos: modelo de um quarto
+da turbina contendo uma pá, chamado de cena e o modelo frontal da pá, chamado de
+modelo. O ponto de referência considerado no modelo da pá foi a origem de seu
+arquivo CAD, assim como no caso da cena, que foi considerado a origem do rotor
+como ponto de referência.
+
+A comparação entre a transformada medida e a de referência se da por meio da
+comparação de dois caminhos que represetam a transformação do sistema de
+coordenadas da origem do sensor presente na aquisição de dados da cena e a
+origem da pá $T_{cp}$.  Para isso, são necessárias as seguintes transformadas:
+
+\begin{itemize}
+  \item $\mathbf{T_{mp}}$ - Transformada entre o sensor do modelo e a
+  origem do sistema de coordenadas da pá, proveniente de seu arquivo CAD.
+  \item $\mathbf{T_{cr}}$ - Transformada entre o sensor da cena e a origem do
+  rotor, que coincide com a origem do arquivo CAD da turbina.
+  \item $\mathbf{T_{rp}}$ - Transformada entre a origem do rotor e a origem da
+  pá, essa transformada é fixa e foi medida no próprio modelo CAD da turbina com
+  o asuxílio do \textit{SolidWorks}.
+  \item $\mathbf{T_{cm}}$ - Transformada entre a origem do sensor da cena e a
+  origem do sensor do modelo. Essa trasnformada é a medida pelo algoritmo de
+  calibração, uma vez que a sobreposição do modelo leva em consideração um ponto
+  de vista em que a nuvem de pontos foi gerada (origem do sistema de
+  coordenadas do sensor do modelo).
+\end{itemize}
+
+As trasnformadas listadas se relacionam da seguinte maneira:
+\begin{equation}
+T_{cp} = T_{cr}*T_{rp} \sim T_{cm}*T_{mp}.
+\label{eq::tfs}
+\end{equation}
+
+
+A figura~\ref{fig::tfs} ilustra a relação entre as transformadas. O erro de
+medição da transformada pode ser calculado como a discrepância entre os dois
+termos da relação~\ref{eq::tfs} pode ser calculada da seguinte maneira:
+
+$$T_e = (T_{cr}*T_{rp})^{-1}*T_{cm}*T_{mp}$$
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\columnwidth]{method/figs/calibracao/tfs}
+	\caption{Representação dos sistemas de coordenadas de cada componente
+	envolvido na calibração.}
+    \label{fig::tfs}
+\end{figure}
+	
+
+Para o teste simulado, ilustrado na figura~\ref{fig::tf_error} com os
+respectivos sistemas de coordenadas, o erro angular encontrado a partir de um
+eixo foi de aproxidamente $0.5^o$ e o erro de translação foi de $15mm$. 
+O erro angular, entretanto, gera um desalinhamento de até $42mm$ a uma distância
+de 5 metros da origem da pá. Sendo assim, existe ainda uma necessidade de ajuste
+no processo de calibração, principalmente na etapa de alinhamento final das
+nuvens de pontos.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/tf_error}
+	\caption{Processo de calibração com os sistemas de coordenadas destacados.}
+    \label{fig::tf_error}
+\end{figure}
+
+\subsection{Conclusão}
+
+A exploração das características trdimensionais do ambiente,
+aquisitadas pelo sensor laser Faro Focus X330, se mostrou viável para a identificação da posição
+e orientação do robô e da pá a ser processada. Entretanto, devido às
+características da pá, com uma grande região sem contornos ou curvas acentuadas,
+existe a necessidade do desenvolvimento de um método de amostragem que favoreça as regiões com maior número de \textit{features} e durante o
+alinhamento, penalize o alinhamento entre regiões planas. Outro quesito em
+aberto é o aprimoramento na medição do erro de estimação do posicionamento da
+pá, uma vez que os erros de rotação e translação podem se somar ou se cancelar.
+
+A utilização de marcadores será empregrada sempre que possível, visando a
+redução da complexidade computacional, porém desenvolvimento da calibração do
+robô necessita da chegada dos marcadores para que seja iniciado.
+
+
+
+

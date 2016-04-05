@@ -1,0 +1,58 @@
+\section{Introdução}
+%TODO  Gabriel: contextualização do problema, sota, Jirau
+
+A metodoligia empregada durante o desenvolvimento do projeto EMMA consistiu em
+diversas etapas, que alimentavam a seguinte e, caso necessário,
+realimentavam uma etapa anterior para refinamento da solução ou alinhamento de
+resultados. 
+
+Primeiramente, no EMMA-SOTA foi realizada uma pesquisa e delimitação
+do escopo do problema, etapa fundamental para o completo entendimento do
+problema e responsável por direcionar o esboço das primeiras soluções. A
+pesquisa sobre o estado da arte mostrou que nenhuma solução disponível no
+mercado e no meio acadêmico é capaz de suprir completamente as necessidades
+presentes no processo de metalização \textit{in situ}, destacando as limitações
+de acesso e espaço confinado como os maiores desafios técnicos e logísticos a
+serem enfrentados. A fim de tentar construir uma solução mais geral, foi
+determinada a utilização da escotilha inferior como acesso principal e a soluçao
+conceitual inicial consiste em um manipulador robótico sobre trilhos modulares.
+
+Como visto em EMMA-DETAIL,  foi realizada uma pesquisa de mercado listando os
+manipuladores comerciais disponíveis e que satisfaziam as restrições de alcance
+e peso. Entretanto a configuração de cada manipulador, ou seja, a disposição
+de seus elos e juntas, influencia em seu espaço de trabalho e um estudo sobre o
+espaço de trabalho e a cinemática do manipulador foi necessária. O
+manipulador Motoman\textregistered MH12 foi eleito para integrar a solução, pois
+possui a capacidade de recobrimento de quase todo o alcance vertical da pá
+(revestimento de cima a baixo), capacidade de carga suficiente para a operação e peso dentro das
+restrições impostas. Paralelamente, a estratégia de posicionamento do sistema e
+a calibração de seus componentes foi verificada, determinando os sensores a
+serem utilizados, afim de satisfazer as restrições de precisão, robustez e
+segurança.
+
+Neste documento será confirmada a real viabilidade de
+sua utilização, verificando que é possível a total cobertura da pá durante o
+processo de revestimento. Análises cinemática, dinâmica serão realizadas com
+o auxílio de ferramentas de simulação como a plataforma OpenRAVE. Em seguida a
+estratégia de controle e planejamento de trajetória tem o objetivo de assegurar
+que a movimentação do manipulador se desenvolva de forma contínua em todo o
+espaço de juntas e que as velocidades e acelerações máximas sejam respeitadas.
+
+Por sua vez, a análise detalhada de cobertura da pá, fornece os requisitos
+mínimos que a base mecânica deve obedecer, como forças exercidas e graus de liberdade necessários
+para alcancar todas as posições da base do manipulador. A partir dos conceitos
+analisados no EMMA-DETAIL, pode-se comparar diferentes soluções e as vantagens
+de desvantagens de cada uma. Foi escolhido o conceito
+Prismático-Rotacional-Prismático-Prismático (P-R-P-P) porque mostrou-se a
+solução mais viável construtivamente. Foi realizado então o projeto básico da
+solução e o dimensionamento dos componentes. Os resultados do dimensionamento
+permitirão o detalhamento final da base mecânica, compra de materiais, montagem
+e testes.
+
+A operação de montagem do trilho e posicionamento do robô, assim como
+a rotação do rotor, isto é, o ângulo em que a pá se encontra, não são fixos ou
+precisamente reprodutíveis e por isso a calibração deve ser realizada e as
+transformadas de coordenadas entre o manipulador e a pá devem ser econtradas.
+Para localizar o manipulador é estudada a utilização de marcadores e o
+posicionamento da pá será encontrado por meio da análise dos dados
+tridimensionais provenientes do sensor Faro\textregistered Focus X330

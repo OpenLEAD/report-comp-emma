@@ -1,0 +1,42 @@
+\section{Metodologia}
+%TODO Gabriel: metodologia da solução, etapas de desenvolvimento (pesquisa de
+% mercado, sota, simulações, montagem e etc)
+
+
+A metodoligia empregada durante o desenvolvimento do projeto EMMA consistiu em
+diversas etapas, que alimentavam a seguinte e, caso necessário,
+realimentavam uma etapa anterior para refinamento da solução ou alinhamento de
+resultados. Primeiramente, no EMMA-SOTA foi realizado uma pesquisa e delimitação
+do escopo do problema, etapa fundamental para o completo entendimento do problema e
+responsável por direcionar o esboço das primeiras soluções. 
+
+Como visto em EMMA-DETAIL, o manipulador eleito para integrar a solução foi o
+Motoman\textregistered MH12, pois possui
+recobrimento de quase todo o alcance vertical da pá (revestimento de cima a
+baixo), capacidade de carga suficiente para a operação e peso dentro das
+restrições impostas. Neste documento será verificada a real viaabilidade de
+sua utilização , confirmando que é possível a total cobertura da pá durante o
+processo de revestimento. A análise cinemática, dinâmica serão realizadas com o auxílio de
+ferramentas de simulação como a plataforma OpenRAVE. Em seguida a estratégia de
+controle e planejamento de trajetória tem o objetivo de assegurar que a
+movimentação do manipulador se desevolva de forma contínua em todo o espaço de juntas e que as velocidades e
+acelerações máximas sejam respeitadas.
+
+A análise detalhada de cobertura da pá, fornece os requisitos mínimos que a base
+mecânica deve obedecer, como forças exercedidas e graus de liberdade necessários
+para alcancar todas as posições da base do manipulador. A partir dos conceitos
+analisados no EMMA-DETAIL, pode-se comparar diferentes soluções e as vantagens
+de desvantagens de cada uma. Foi escolhido o conceito
+Prismático-Rotacional-Prismático-Prismático (P-R-P-P) porque mostrou-se a
+solução mais viável construtivamente. Foi realizado então o projeto básico da
+solução e o dimensionamento dos componentes. Os resultados do dimensionamento
+permitirão o detalhamento final da base mecânica, compra de materiais, montagem
+e testes.
+
+A operação de montagem do trilho e posicionamento do robô, assim como
+a rotação do rotor, isto é, o ângulo em que a pá se encontra, não são fixos ou
+precisamente reprodutíveis e por isso a calibração deve ser realizada e as
+transformadas de coordenadas entre o manipulador e a pá devem ser econtradas.
+Para localizar o manipulador é estudada a utilização de marcadores e o
+posicionamento da pá será encontrado por meio da análise dos dados
+tridimensionais provenientes do sensor Faro\textregistered Focus X330

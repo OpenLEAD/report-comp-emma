@@ -1,0 +1,29 @@
+\section{Metodologia do sistema de controle}
+A metodologia para a construção de um sistema de controle para o manipulador do
+projeto EMMA consiste nas seguintes etapas: 1) construção do ambiente de
+simulação da área de interesse da turbina (pás, rotor, íris, acessos e aro
+câmara), e modelagem do manipulador; 2) análises cinemática, dinâmica e
+controle do manipulador; 3) planejamento de trajetórias e velocidades.
+
+Nesta análise de viabilidade técnica, foi utilizada a 
+multi-plataforma arquitetura de software de código aberto Open
+Robotics and Animation Virtual Environment (OpenRAVE). OpenRAVE é voltado para
+aplicações de robôs autônomos e possui simulação 3D, visualização, planejamento,
+e controle. A arquitetura de plugin permite ao usuário desenvolver controladores
+customizados ou estender funcionalidades. O desenvolvedor pode se
+concentrar em planejamento e aspectos específicos do problema, sem necessitar
+gerenciar explicitamente os detalhes de cinemática e dinâmica do robô,
+detecção de colisão ou atualização do mundo (ambiente). Além disso, OpenRAVE
+pode ser usado em conjunção com populares pacotes de robótica, como ROS, Player e MatLab
+\cite{diankov2008openrave}. 
+
+\input{method/controle_ambiente}
+\input{method/controle_cinematica}
+\input{method/controle_planejamento}
+
+
+
+
+
+% \subsection{Sistema de controle}
+% % superfinal - citando tipos de controle que cobrem os apectos de caminho

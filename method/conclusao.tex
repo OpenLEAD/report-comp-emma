@@ -1,0 +1,44 @@
+\section{Conclusão}
+%TODO TODOS: conclusoes finais
+
+% -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
+%Mecânica
+As simulações pelo Método de Elementos Finitos verificaram a rigidez da
+estrutura dada, a geometria imposta pelo conceito P-R-P-P e para as opções
+comerciais disponíveis de material, perfil de alumínio estrutural, trilho e bases
+magnéticas.
+Os resultados se mostraram satisfatórios para os os componentes selecionados,
+ressaltando que foram considerados casos extremos de operação. A flexibilidade
+da estrutura causa erros com ordem de grandeza de $1~mm$, o que não interfere na
+qualidade do processo.
+As forças resultantes nos pontos de ancoragem permitem dimensionamento e seleção
+das bases mecânicas para cada região de ancoragem, não limitando o mesmo tamanho
+de base para todos os pontos.
+Os resultados de integridade do componentes conferiram Fatores de Segurança
+aceitáveis e dentro dos valores recomendados para projetos mecânicos em geral.
+% -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
+
+
+% -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
+%Controle
+No âmbito do controle e planejamento de trajetória, o método desenvolvido já se
+mostrou capaz de analisar a superfície da pá, segmenta-la em regiões e definir
+caminhos para serem percorridos, tanto pelo efetuador (no espaço de trabalho)
+quanto pelas juntas (no espaço de juntas).
+
+Porém, validações da precisão do resultado e análise de colisão devem ser mais
+exploradas. Também devem ser julgadas pequenas modificações do método como
+aplicação de minímos quadrados móveis na definição da superfície, técnica 
+que possibilitaria um maior controle do erro localmente.
+
+% -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
+%Calibração
+
+Por sua vez, a exploração das características trdimensionais do ambiente,
+aquisitadas pelo sensor laser Faro Focus X330, se mostrou viável para a identificação da posição
+e orientação do robô e da pá a ser processada.
+A utilização de marcadores será empregrada sempre que possível. Entretanto para
+a localicazação da pá, apenas a nuvem de pontos será utilizada, devido a
+limitaçoes de instalção.
+A simulação do ambiente da turbina possibilitou a implementação de um algoritmo preliminar e o
+teste com a presença de oclusões e ruído.
