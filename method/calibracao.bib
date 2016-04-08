@@ -1,0 +1,146 @@
+@article{Tombari2010a,
+abstract = {In this work we propose a novel Hough voting approach for the detection of free-form shapes in a 3D space, to be used for object recognition tasks in 3D scenes with a significant degree of occlusion and clutter. The proposed method relies on matching 3D features to accumulate evidence of the presence of the objects being sought in a 3D Hough space. We validate our proposal by presenting a quantitative experimental comparison with state-of-the-art methods as well as by showing how our method enables 3D object recognition from real-time stereo data.},
+author = {Tombari, Federico and {Di Stefano}, Luigi},
+doi = {10.1109/PSIVT.2010.65},
+file = {:home/flash/Downloads/05673921.pdf:pdf},
+isbn = {9780769542850},
+journal = {Proceedings - 4th Pacific-Rim Symposium on Image and Video Technology, PSIVT 2010},
+keywords = {3D object recognition,Hough voting,Surface matching},
+mendeley-groups = {Object Recognition},
+pages = {349--355},
+title = {{Object recognition in 3D scenes with occlusions and clutter by Hough voting}},
+year = {2010}
+}
+
+@misc{ransac,
+ title = {Random Sample Consensus },
+ author={PLC},
+ howpublished={\url{http://www.pointclouds.org/documentation/tutorials/random_sample_consensus.php}	},
+ note = {Acessado: 30- 11-2015},
+ year={2015},
+} 
+
+@article{hough2014,
+year={2014},
+issn={0932-8092},
+journal={Machine Vision and Applications},
+volume={25},
+number={7},
+doi={10.1007/s00138-014-0640-3},
+title={3D Hough transform for sphere recognition on point clouds},
+url={http://dx.doi.org/10.1007/s00138-014-0640-3},
+publisher={Springer Berlin Heidelberg},
+keywords={3D Hough transform; Sphere detection; Randomized HT; Probabilistic HT},
+author={Camurri, Marco and Vezzani, Roberto and Cucchiara, Rita},
+pages={1877-1891},
+language={English}
+}
+
+@article{Bayramoglu2010,
+abstract = {Range image recognition gains importance in the recent years due to the developments in acquiring, displaying, and storing such data. In this paper, we present a novel method for matching range surfaces. Our method utilizes local surface properties and represents the geometry of local regions efficiently. Integrating the Scale Invariant Feature Transform (SIFT) with the shape index (SI) representation of the range images allows matching of surfaces with different scales and orientations. We apply the method for scaled, rotated, and occluded range images and demonstrate the effectiveness it by comparing the previous studies.},
+author = {Bayramoglu, N. and a.a. Alatan},
+doi = {10.1109/ICPR.2010.95},
+file = {:home/flash/Downloads/00463517667cb9094b000000.pdf:pdf},
+isbn = {978-1-4244-7542-1},
+issn = {1051-4651},
+journal = {Pattern Recognition (ICPR), 2010 20th International Conference on},
+keywords = {local description,range image recognition,scale invariance,shape index},
+number = {September},
+pages = {1--5},
+title = {{Shape Index SIFT: Range Image Recognition Using Local Features}},
+year = {2010}
+}
+
+@article{Hetzel2001,
+abstract = { The paper explores a view-based approach to recognize free-form objects in range images. We are using a set of local features that are easy to calculate and robust to partial occlusions. By combining those features in a multidimensional histogram, we can obtain highly discriminant classifiers without the need for segmentation. Recognition is performed using either histogram matching or a probabilistic recognition algorithm. We compare the performance of both methods in the presence of occlusions and test the system on a database of almost 2000 full-sphere views of 30 free-form objects. The system achieves a recognition accuracy above 93{\%} on ideal images, and of 89{\%} with 20{\%} occlusion.},
+author = {Hetzel, G. and Leibe, B. and Levi, P. and Schiele, B.},
+doi = {10.1109/CVPR.2001.990988},
+file = {:home/flash/Downloads/hetzel-range-cvpr01.pdf:pdf},
+isbn = {0-7695-1272-0},
+issn = {1063-6919},
+journal = {Proceedings of the 2001 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. CVPR 2001},
+title = {{3D object recognition from range images using local feature histograms}},
+volume = {2},
+year = {2001}
+}
+
+@article{Chen2007,
+abstract = {This paper introduces an integrated local surface descriptor for surface representation and 3D object recognition. A local surface descriptor is characterized by its centroid, its local surface type and a 2D histogram. The 2D histogram shows the frequency of occurrence of shape index values vs. the angles between the normal of reference feature point and that of its neighbors. Instead of calculating local surface descriptors for all the 3D surface points, they are calculated only for feature points that are in areas with large shape variation. In order to speed up the retrieval of surface descriptors and to deal with a large set of objects, the local surface patches of models are indexed into a hash table. Given a set of test local surface patches, votes are cast for models containing similar surface descriptors. Based on potential corresponding local surface patches candidate models are hypothesized. Verification is performed by running the Iterative Closest Point (ICP) algorithm to align models with the test data for the most likely models occurring in a scene. Experimental results with real range data are presented to demonstrate and compare the effectiveness and efficiency of the proposed approach with the spin image and the spherical spin image representations. ?? 2007 Elsevier B.V. All rights reserved.},
+author = {Chen, Hui and Bhanu, Bir},
+doi = {10.1016/j.patrec.2007.02.009},
+file = {:home/flash/Downloads/3dfreeformjuly07.pdf:pdf},
+issn = {01678655},
+journal = {Pattern Recognition Letters},
+keywords = {3D object recognition,Free-form surface registration,Local surface patch,Model indexing,Range images},
+number = {10},
+pages = {1252--1262},
+title = {{3D free-form object recognition in range images using local surface patches}},
+volume = {28},
+year = {2007}
+}
+
+@article{Steder2009,
+abstract = {A mobile robot that accomplishes high level tasks needs to be able to classify the objects in the environment and to determine their location. In this paper, we address the problem of online object detection in 3D laser range data. The object classes are represented by 3D point-clouds that can be obtained from a set of range scans. Our method relies on the extraction of point features from range images that are computed from the point-clouds. Compared to techniques that directly operate on a full 3D representation of the environment, our approach requires less computation time while retaining the robustness of full 3D matching. Experiments demonstrate that the proposed approach is even able to deal with partially occluded scenes and to fulfill the runtime requirements of online applications.},
+author = {Steder, Bastian and Grisetti, Giorgio and Van Loock	, Mark and Burgard, Wolfram},
+doi = {10.1109/IROS.2009.5354400},
+isbn = {9781424438044},
+journal = {2009 IEEE/RSJ International Conference on Intelligent Robots and Systems, IROS 2009},
+keywords = {Object detection,Point clouds,Range images},
+pages = {4739--4744},
+title = {{Robust on-line model-based object detection from range images}},
+year = {2009}
+}
+
+@article{Nuchter2005,
+author = {N\"uchter, Andreas and Lingemann, Kai and Hertzberg, Joachim and Surmann, Hartmut},
+doi = {10.1109/ICAR.2005.1507480},
+file = {:home/flash/Downloads/01507480.pdf:pdf},
+isbn = {0780391772},
+journal = {2005 International Conference on Advanced Robotics, ICAR '05, Proceedings},
+pages = {665--672},
+title = {{Accurate object localization in 3D laser range scans}},
+volume = {2005},
+year = {2005}
+}
+
+@article{Weber2014,
+author = {Weber, T and Hellwich},
+doi = {10.5194/isprsannals-II-3-57-2014},
+file = {:home/flash/Downloads/isprsannals-II-3-57-2014.pdf:pdf},
+keywords = {keypoint description,keypoint detection,keypoint matching,ms kinect,point cloud fusion},
+number = {September},
+pages = {5--7},
+title = {{Comparison of 3D Interest Point Detectors and Descriptors for Point Cloud Fusion}},
+volume = {II},
+year = {2014}
+}
+
+@article{Zaharia2004,
+author = {Zaharia, Titus B and Pr{\^{e}}teux, Fran{\c{c}}oise J},
+doi = {10.1117/12.533092},
+file = {:home/flash/Downloads/10.1.1.96.4410.pdf:pdf},
+issn = {0277786X},
+journal = {Image Processing: Algorithms and Systems},
+keywords = {dblp},
+number = {Section 3},
+pages = {47--58},
+title = {{3D versus 2D/3D shape descriptors: a comparative study.}},
+url = {http://dblp.uni-trier.de/db/conf/ipas/ipas2004.html{\#}ZahariaP04},
+volume = {5289},
+year = {2004}
+}
+
+@article{Gschwandtner2011,
+author = {Gschwandtner, Michael and Kwitt, Roland and Uhl, Andreas and Pree, Wolfgang},
+doi = {10.1007/978-3-642-24031-7-20},
+file = {:home/flash/Downloads/Gschwandtner11b.pdf:pdf},
+isbn = {978-3-642-24030-0},
+issn = {03029743},
+journal = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+mendeley-groups = {Object Recognition},
+number = {PART 2},
+pages = {199--208},
+title = {{BlenSor: Blender sensor simulation toolbox}},
+volume = {6939 LNCS},
+year = {2011}
+}

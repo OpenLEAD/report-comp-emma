@@ -16,10 +16,15 @@ draft=false]{report}%openany,version=last
 \usepackage{titletoc}
 \usepackage{longtable}
 \usepackage[brazilian]{babel} 
-\usepackage{hyperref} 
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\hypersetup{breaklinks=true}
+\urlstyle{same}
+\usepackage{cite}
 \usepackage[position=b]{subcaption}
-\usepackage{wrapfig}
 \usepackage{natbib}        % required for bibliography
+\usepackage{boxhandler}
+
 
 \newcommand*{\fancychapterstyle}{%
   \titleformat{\chapter} % command
@@ -102,7 +107,7 @@ draft=false]{report}%openany,version=last
 \chapter{Plano de Projeto}\label{chap::planejamento}
 \include{planejamento}
 
-\chapter{Estudo do conceito}
+\chapter{Estudo do conceito}\label{cap::sota}
 \input{sota/Introduction} 
 \input{sota/Descricao}
 \input{sota/SOTA}
@@ -161,9 +166,9 @@ draft=false]{report}%openany,version=last
 % futuros,rq1_6[,18,section,1,Referências,rq1_7]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}]{pdfs/sota}
 % % ---------------------------------------------------------------------------
 
-\chapter{Estudo de viabilidade técnica}
+\chapter{Estudo de viabilidade técnica}\label{cap::detail}
 
-%\input{detail/Introduction}
+\input{detail/Introduction}
 \input{detail/estudo_viatec} 
 \input{detail/Localizacao}
 % \input{apendice}
@@ -228,8 +233,8 @@ draft=false]{report}%openany,version=last
 % futuros,rq2_5]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}]{pdfs/detail}
 % ---------------------------------------------------------------------------
 
-\chapter{Relatório Quadrimestral 3}
-
+\chapter{Estudo da Metodologia}\label{cap::method}
+\input{method/introducao}
 \input{method/controle}
 \input{method/mecanica}
 \input{method/calibracao}
@@ -293,9 +298,11 @@ draft=false]{report}%openany,version=last
 % de
 % resultados,rq3_44[,20,subsection,2,Conclusão,rq3_45[,21,section,1,Referências,rq3_5[,21,section,1,Apêndice,rq3_6]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}]{pdfs/method}
 % ---------------------------------------------------------------------------
-
+\bibliographystyle{plain}
+\bibliography{sota/main,detail/main,method/main,method/calibracao}
 
 \appendix
+
 
 
 
@@ -307,16 +314,18 @@ draft=false]{report}%openany,version=last
 \chapter{Dimensionamento Trilho}
 \include{method/apendice}
 
+\chapter{Relatório de Testes}\label{apen::testes}
+\includepdf[pages=1-]{pdfs/Viagem04_EMMA_ESBR}
+\includepdf[pages=3-9]{pdfs/Viagem04_EMMA}
+
+
 
 \chapter{Relatórios de Viagem}
 \includepdf[pages=1-]{pdfs/Viagem01_EMMA_ESBR}
 \includepdf[pages=3-]{pdfs/Viagem01_EMMA}
 
 \includepdf[pages=1-]{pdfs/Viagem02_EMMA_ESBR}
-\includepdf[pages=3-]{pdfs/Viagem02_EMMA}
-
-\includepdf[pages=1-]{pdfs/Viagem04_EMMA_ESBR}
-\includepdf[pages=3-]{pdfs/Viagem04_EMMA}
+\includepdf[pages=3-5]{pdfs/Viagem02_EMMA}
 
 
 \chapter{Capacitação}

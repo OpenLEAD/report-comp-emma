@@ -1,7 +1,7 @@
 \section{Solução da calibração}
 
-Como especificado em EMMA-DETAIL, o sensor a ser adquirido pelo projeto é o Faro
-Focus X330.
+Como especificado em \ref{cap::detail}, o sensor a ser adquirido pelo projeto é
+o Faro Focus X330.
 Esse dispositivo consiste em um \textit{laser scanner} e aquisita a medida da
 distância percorrida pelo feixe $laser$ emitido pelo sensor até o obstáculo mais próximo. A partir de um
 espelho rotativo e um motor acoplado a sua base, o Focus X330 é capaz de
@@ -40,7 +40,7 @@ uma calibração entre o posicionamento dos marcadores e o manipulador.
 
 \begin{figure}[h!]
    \centering
-   \includegraphics[width=0.95\columnwidth]{method/figs/calibracao/sphere_rec}
+   \includegraphics[width=0.7\columnwidth]{method/figs/calibracao/sphere_rec}
    \caption{Exemplo de esfera utilizada para reconhecimento. Fonte:
    http://shop.talwin.net/}
    \label{fig::sphere_rec}
@@ -50,7 +50,7 @@ uma calibração entre o posicionamento dos marcadores e o manipulador.
 
 \begin{figure}[h!]
    \centering
-   \includegraphics[width=0.95\columnwidth]{method/figs/calibracao/checkerboard_rec}
+   \includegraphics[width=0.7\columnwidth]{method/figs/calibracao/checkerboard_rec}
    \caption{Exemplo de padrão de xadrez utilizado para renhecimento.\\ Fonte:
    http://stereomorph.blogspot.com.br/}
    \label{fig::checkerboard_rec}
@@ -93,7 +93,7 @@ em um tratamento especial quando temos mais de uma esfera no ambiente.
 
 \begin{figure}[h!]
    \centering
-   \includegraphics[width=0.95\columnwidth]{method/figs/calibracao/ransac}
+   \includegraphics[width=0.9\columnwidth]{method/figs/calibracao/ransac}
    \caption{Exemplo de reconhecimento de uma linha em 2 dimensões usando
    RANSAC. (Fonte: \cite{ransac})}
    \label{fig::ransac}
@@ -125,7 +125,7 @@ que exploram amostragens estatísticas para reduzir esse esforço.
 
 \begin{figure}[h!]
    \centering
-   \includegraphics[width=0.95\columnwidth]{method/figs/calibracao/hough}
+   \includegraphics[width=0.7\columnwidth]{method/figs/calibracao/hough}
    \caption{Exemplo de reconhecimento de duas linhas em 2 dimensões usando
    Transformada de Hough. Na esquerda estão pontos que compõem as duas retas, na
    direita uma sobreposição das variedades referentes a cada ponto das retas
@@ -277,7 +277,7 @@ algoritmo de calibração.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/modelo_pa_faro}
+	\includegraphics[width=0.7\columnwidth]{method/figs/calibracao/modelo_pa_faro}
 	\caption{Nuvem de pontos da pá aquisitada pelo sensor Faro Focus X330.}
     \label{fig::modelo_pa_faro}
 \end{figure}
@@ -464,7 +464,7 @@ $$T_e = (T_{cr}*T_{rp})^{-1}*T_{cm}*T_{mp}$$
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\columnwidth]{method/figs/calibracao/tfs}
+	\includegraphics[width=0.6\columnwidth]{method/figs/calibracao/tfs}
 	\caption{Representação dos sistemas de coordenadas de cada componente
 	envolvido na calibração.}
     \label{fig::tfs}
@@ -481,7 +481,7 @@ nuvens de pontos.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{method/figs/calibracao/tf_error}
+	\includegraphics[width=0.7\columnwidth]{method/figs/calibracao/tf_error}
 	\caption{Processo de calibração com os sistemas de coordenadas destacados.}
     \label{fig::tf_error}
 \end{figure}

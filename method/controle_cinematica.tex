@@ -10,7 +10,7 @@ A metodologia percorre os seguintes tópicos: 1) discretização da pá; 2)
 avaliação de revestimento dos extremos da pá, restringindo a base a um trilho
 idealizado pelo projeto mecânico; 3) teste de revestimento completo; 4) teste de
 revestimento de áreas até então não revestidas, sugerindo novas posições para a
-base. Onde 1) já foi previamente avaliado em \textit{EMMA-DETAIL}. 
+base. Onde 1) já foi previamente avaliado em \ref{cap::detail}. 
 
 As variáveis do processo de revestimento são: 1) pistola de revestimento
 é aproximada por um cilindro de 300 mm de comprimento e 50 mm de raio, 
@@ -21,8 +21,8 @@ ser mantida em $235 \pm 5$ mm durante toda a operação; 4) o ângulo entre a
 pistola e o plano da pá deve ser $90^o \pm 60^o$, mas é aconselhável uma
 tolerância máxima de $30^o$.
 
-Além disso, vale observar algumas conclusões feitas no relatório
-\textit{EMMA-DETAIL}: 1) a análise cinemática verifica se, dado um ponto da
+Além disso, vale observar algumas conclusões feitas no capítulo
+\ref{cap::detail}: 1) a análise cinemática verifica se, dado um ponto da
 pá, há alguma configuração das juntas para revestí-lo; 2) a análise dinâmica
 mostrou que, durante a execução de uma trajetória, se o manipulador estiver
 muito próximo do ponto que deseja revestir, os ângulos das juntas tendem a
@@ -43,14 +43,14 @@ pelo vetor normal.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=0.9\columnwidth]{method/figs/tocoat.jpg}
+	\includegraphics[width=0.7\columnwidth]{method/figs/tocoat.jpg}
 	\caption{Extremidades da pá em preto.}
 	\label{fig::extremidades}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=0.9\columnwidth]{method/figs/normal.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/normal.png}
 	\caption{Vetores normais (em preto) de pontos a serem revestidos (em
 	vermelho).}
 	\label{fig::normal}
@@ -74,7 +74,7 @@ consideração as respectivas tolerâncias.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/trilho2all.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/trilho2all.png}
 	\caption{Possíveis posições da base do robô, em verde.}
 	\label{fig::trilho2all}
 \end{figure}
@@ -93,7 +93,7 @@ vermelho, pontos que não foram revestidos para esta posição do robô.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/footleft.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/footleft.png}
 	\caption{Estudo de revestimento para a extremidade inferior esquerda.}
 	\label{fig::footleft}
 \end{figure}
@@ -120,7 +120,7 @@ não foram revestidos para esta posição do robô.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/footright.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/footright.png}
 	\caption{Estudo de revestimento para a extremidade inferior direita.}
 	\label{fig::footright}
 \end{figure}
@@ -140,7 +140,7 @@ não foram revestidos para esta posição do robô.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/shoulderleft.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/shoulderleft.png}
 	\caption{Estudo de revestimento para a extremidade superior esquerda.}
 	\label{fig::shoulderleft}
 \end{figure}
@@ -168,7 +168,7 @@ não foram revestidos para esta posição do robô.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/shoulderright.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/shoulderright.png}
 	\caption{Estudo de revestimento para a extremidade superior direita.}
 	\label{fig::shoulderright}
 \end{figure}
@@ -239,7 +239,7 @@ Como pode ser visto, não foi possível revestir os pontos da lateral direita, a
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/simcomp1_1.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/simcomp1_1.png}
 	\caption{Simulação de revestimento completo da pá, considerando as
 	restrições mecânicas da base, ângulo $0^o$ do rotor e $24^o$ da pá.}
 	\label{fig::simcomp1_1}
@@ -265,7 +265,7 @@ esquerda da pá é completa, porém o lado direito fica prejudicado.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/simcomp1_5.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/simcomp1_5.png}
 	\caption{Simulação de revestimento completo da pá, considerando as
 	restrições mecânicas da base, ângulo $-15^o$ do rotor e $24^o$ da pá.}
 	\label{fig::simcomp1_5}
@@ -279,7 +279,7 @@ suprir eventuais problemas de modelagem.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/simcomp1_3.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/simcomp1_3.png}
 	\caption{Simulação de revestimento completo da pá, considerando as
 	restrições mecânicas da base, ângulo $0^o$ do rotor e $24^o$ da pá,
 	tolerância de $60^o$ de revestimento.}
@@ -294,7 +294,7 @@ não ficar dependente dos movimentos da turbina.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/simcomp1_6.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/simcomp1_6.png}
 	\caption{Simulação de revestimento completo da pá, considerando as
 	restrições mecânicas da base, ângulo $0^o$ do rotor e $24^o$ da pá,
 	$y+500 mm$.}
@@ -319,7 +319,7 @@ esperado, vide subseção~\ref{superioresquerda}.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/simcomp1_2.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/simcomp1_2.png}
 	\caption{Simulação de revestimento completo da pá, considerando as
 	restrições mecânicas da base, ângulo $15^o$ do rotor e $24^o$ da pá.}
 	\label{fig::simcomp1_2}
@@ -337,7 +337,7 @@ funcionamento do circuito hidráulico.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/simcomp1_4.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/simcomp1_4.png}
 	\caption{Simulação de revestimento completo da pá, considerando as
 	restrições mecânicas da base, ângulo $0^o$ do rotor e $0^o$ da pá.}
 	\label{fig::simcomp1_4}
@@ -363,7 +363,7 @@ do robô no lado do distribuidor.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=\columnwidth]{method/figs/simcomp1_7.png}
+	\includegraphics[width=0.7\columnwidth]{method/figs/simcomp1_7.png}
 	\caption{Simulação de revestimento completo da pá, considerando as
 	restrições mecânicas da base, ângulo $45^o$ do rotor e $24^o$ da pá, robô
 	entre as pás.}
