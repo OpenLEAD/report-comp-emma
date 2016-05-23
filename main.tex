@@ -16,7 +16,6 @@ draft=false]{report}%openany,version=last
 \usepackage{titletoc}
 \usepackage{longtable}
 \usepackage[brazilian]{babel} 
-\usepackage[hyphens]{url}
 \usepackage{hyperref}
 \hypersetup{breaklinks=true}
 \urlstyle{same}
@@ -24,6 +23,7 @@ draft=false]{report}%openany,version=last
 \usepackage[position=b]{subcaption}
 \usepackage{natbib}        % required for bibliography
 \usepackage{boxhandler}
+%\usepackage[hyphens]{url}
 
 
 \newcommand*{\fancychapterstyle}{%
@@ -88,7 +88,9 @@ draft=false]{report}%openany,version=last
 \footskip = 30pt
 \pagenumbering{gobble}
 
-\begin{document} \sloppy
+\begin{document} 
+
+% \sloppy
  
 \pagenumbering{arabic}  
 \include{frontpage}
