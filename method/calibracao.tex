@@ -169,7 +169,8 @@ mesmas características locais da superfície na presença de:
   influenciar a estimação dos descriptors;
   \item \textbf{Variações na densidade de amostragem} - em princípio, uma de
   superfície amostrada mais ou menos densamente deve ter a mesma assinatura característica do vetor
-  \item \textbf{Ruído}
+  \item \textbf{Ruído} - a representação deve ser robusta a presença de ruídos
+  provenientes do sensor e do ambiente.
 \end{itemize}
 
 O reconhecimento de objetos em aplicações robóticas também vem recebido
@@ -436,12 +437,12 @@ origem da pá $T_{cp}$.  Para isso, são necessárias as seguintes transformadas
 
 \begin{itemize}
   \item $\mathbf{T_{mp}}$ - Transformada entre o sensor do modelo e a
-  origem do sistema de coordenadas da pá, proveniente de seu arquivo CAD.
+  origem do sistema de coordenadas da pá, proveniente de seu arquivo CAD;
   \item $\mathbf{T_{cr}}$ - Transformada entre o sensor da cena e a origem do
-  rotor, que coincide com a origem do arquivo CAD da turbina.
+  rotor, que coincide com a origem do arquivo CAD da turbina;
   \item $\mathbf{T_{rp}}$ - Transformada entre a origem do rotor e a origem da
   pá, essa transformada é fixa e foi medida no próprio modelo CAD da turbina com
-  o asuxílio do \textit{SolidWorks}.
+  o asuxílio do \textit{SolidWorks};
   \item $\mathbf{T_{cm}}$ - Transformada entre a origem do sensor da cena e a
   origem do sensor do modelo. Essa trasnformada é a medida pelo algoritmo de
   calibração, uma vez que a sobreposição do modelo leva em consideração um ponto
