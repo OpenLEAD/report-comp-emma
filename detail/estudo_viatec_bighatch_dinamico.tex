@@ -38,9 +38,9 @@ podem-se calcular as velocidades das juntas do manipulador entre o ponto de
 referência e cada ponto auxiliar: $\dot{X} = J\dot{q}\Rightarrow
 J^+\dot{X}=\dot{q}$, onde $J^+$ é a pseudo inversa Moore-Penrose de $J$.
 
-As velocidades angulares são $\Omega_r
+As velocidades angulares são $$\Omega_r
 =
-\{\omega_{p_r,p_1},\omega_{p_r,p_2},\omega_{p_r,q_1},\omega_{p_r,q_2},\omega_{p_r,r_1},\omega_{p_r,r_2},\omega_{p_r,s_1},\omega_{p_r,s_2}\}$,
+\{\omega_{p_r,p_1},\omega_{p_r,p_2},\omega_{p_r,q_1},\omega_{p_r,q_2},\omega_{p_r,r_1},\omega_{p_r,r_2},\omega_{p_r,s_1},\omega_{p_r,s_2}\},$$
 onde $\omega$, $\omega\in\Omega_r$, é um vetor $n \times 1$, e $n$ é o número de
 juntas do robô. As velocidades dos ângulos das juntas é uma informação importate para a
 verificação da viabilidade das trajetórias do robô. Para o caso do robô
@@ -83,7 +83,7 @@ Com a informação dos ângulos, velocidades e acelerações das juntas, momento
 de inércia e massa dos elos, o OpenRave calcula a dinâmica inversa através do
 método Newton-Euler, obtendo-se os torques. Para cada ponto de referência, há quatro direções
 (trajetórias) possíveis amostradas que o efetuador pode percorrer:
-$\{(p_1,p_r,p_2),(q_1,p_r,q_2),(r_1,p_r,r_2),(s_1,p_r,s_2)\}$, logo quatro
+$$\{(p_1,p_r,p_2),(q_1,p_r,q_2),(r_1,p_r,r_2),(s_1,p_r,s_2)\},$$ logo quatro
 ângulos, velocidades e acelerações de juntas, portanto são obtidos quatro
 possíveis vetores de torques:
 $T=\{\tau_{rp},\tau_{rq},\tau_{rr},\tau_{rs}\}$. E, especificamente para o

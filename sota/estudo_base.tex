@@ -24,7 +24,8 @@ figura \ref{fig::robot_front}.
 
  %TODO figura robo na frente da turbina
 Nessa posição é possivel processar uma face por
-vez, a uma altura de 1000mm do chão, com um alcance mínimo do manipulador t de 1800mm.
+vez, a uma altura de 1000mm do chão, com um alcance mínimo do manipulador de
+1800mm.
 Para essa
 configuração, a tamanho máximo no sentido perpendicular ao fluxo d'água que
 a base pode assumir é de aproximadamente 1600mm. Existe ainda a curvatura do aro
@@ -72,14 +73,16 @@ entre as pás, como ilustrado na figura \ref{fig::robot_between}, depende do
 	\caption{Exemplo de posicionamento de um manipulador robótico entre as pás.}
 	\label{fig::robot_between}
 \end{figure}
-A distância entre as pás pode ser calculada por meio do cálculo do ângulo diédrico entre elas. A amplitude do movimento de rotação $alpha$ 
-das pás é de $14,5^o$ para cada lado a partir da posição zero, entretanto \textbf{essa posição não pôde ser
-informada no momento da viagem de reconhecimento e ainda não foi
-disponibilizada}. Para critério de cálculos foi utilizado um ângulo de
-$45^o$ como a posição de maior abertura das pás e o zero foi considerado como
-a reta perpendicular ao fluxo de água. O ângulo diédrico $\theta$ entre as pás
-depende do ângulo de ataque das pás e obedece a relação $\cos{\theta} =
-\sin^2{\alpha}.$
+A distância entre as pás pode ser calculada por meio do cálculo do ângulo
+diédrico,definido como o espaço entre dois semiplanos não contidos num mesmo
+plano com origem numa aresta comum, entre elas. A amplitude do movimento de
+rotação $alpha$ das pás é de $14,5^o$ para cada lado a partir da posição zero,
+entretanto \textbf{essa posição não pôde ser informada no momento da viagem de
+reconhecimento e ainda não foi disponibilizada}. Para critério de cálculos foi
+utilizado um ângulo de $45^o$ como a posição de maior abertura das pás e o zero
+foi considerado como a reta perpendicular ao fluxo de água. O ângulo diédrico
+$\theta$ entre as pás depende do ângulo de ataque das pás e obedece a relação
+$\cos{\theta} = \sin^2{\alpha}.$
 
 O a distância entre as pás, considerada como o arco de circunferência no aro
 câmara descrito pelo ângulo diédrico calculado, pode ser obtido a partir da

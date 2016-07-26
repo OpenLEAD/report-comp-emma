@@ -1,7 +1,7 @@
 \section{Solução da calibração}
 
-Como especificado em \ref{cap::detail}, o sensor a ser adquirido pelo projeto é
-o Faro Focus X330.
+Como especificado no capítulo \ref{cap::detail}, o sensor a ser adquirido pelo
+projeto é o Faro Focus X330.
 Esse dispositivo consiste em um \textit{laser scanner} e aquisita a medida da
 distância percorrida pelo feixe $laser$ emitido pelo sensor até o obstáculo mais próximo. A partir de um
 espelho rotativo e um motor acoplado a sua base, o Focus X330 é capaz de
@@ -34,25 +34,25 @@ O Robô é uma estrutura que a idenficação pode ser facilitada pelo uso de
 padrões de fácil reconhecimento (como esferas e padrões de xadrez, figuras
 \ref{fig::sphere_rec} e \ref{fig::checkerboard_rec}), pois a
 introdução de alterações na base do robô podem ser realizadas de maneira
-estruturada e controlad, na etapa de construção do sistema, assegurando assim
+estruturada e controlada, na etapa de construção do sistema, assegurando assim
 uma calibração entre o posicionamento dos marcadores e o manipulador.
 
 
-\begin{figure}[h!]
+\begin{figure}[H]
    \centering
-   \includegraphics[width=0.7\columnwidth]{method/figs/calibracao/sphere_rec}
+   \includegraphics[width=0.5\columnwidth]{method/figs/calibracao/sphere_rec}
    \caption{Exemplo de esfera utilizada para reconhecimento. Fonte:
-   http://shop.talwin.net/}
+   \url{http://shop.talwin.net/}.}
    \label{fig::sphere_rec}
 \end{figure}
 
 
 
-\begin{figure}[h!]
+\begin{figure}[H]
    \centering
-   \includegraphics[width=0.7\columnwidth]{method/figs/calibracao/checkerboard_rec}
-   \caption{Exemplo de padrão de xadrez utilizado para renhecimento.\\ Fonte:
-   http://stereomorph.blogspot.com.br/}
+   \includegraphics[width=0.5\columnwidth]{method/figs/calibracao/checkerboard_rec}
+   \caption{Exemplo de padrão de xadrez utilizado para reconhecimento.\\ Fonte:
+   \url{http://stereomorph.blogspot.com.br}.}
    \label{fig::checkerboard_rec}
 \end{figure}
 
@@ -268,7 +268,7 @@ serão encontradas no cenário real de operação.
 Para um primeiro contato com o funcionamento do método \textit{Correspondence
 Grouping} foram utilizados dados genéricos disponíveis na
 literatura\footnotemark \footnotetext{http://kos.informatik.uni-osnabrueck.de/3Dscans/} e o modelo da pá gerado pelo sensor Faro Focus X330 , durante a viagem de campo
-à Usina Hidrelética de Jirau para o teste de viabilidade técnica desse sensor.
+à Usina Hidrelética Jirau para o teste de viabilidade técnica desse sensor.
 
 
 A figura \ref{fig::modelo_pa_faro} ilustra o modelo da pá em nuvem de pontos,
@@ -334,7 +334,7 @@ uma técnica de \textit{raycast} pura.
 Dentro do ambiente de simulação, é possível a sintetização de dados provenientes
 de diversos tipos de sensores laser, como um laserscanner 2D, o sensor
 Velodyne e sensores do tipo Kinect. Os parâmetros de configuração
-dos sensores também estão disponíveis para ajuste, assim como o seu respectivo
+dos sensores também estão disponí\-veis para ajuste, assim como o seu respectivo
 nível de ruído.
 Sensores que não estão nativamente disponíveis podem ser introduzidos. O sensor Faro Focus X330 não
 pertence a lista de sensores previamente carregados pela ferramenta e teve que
@@ -493,13 +493,13 @@ A exploração das características trdimensionais do ambiente,
 aquisitadas pelo sensor laser Faro Focus X330, se mostrou viável para a identificação da posição
 e orientação do robô e da pá a ser processada. Entretanto, devido às
 características da pá, com uma grande região sem contornos ou curvas acentuadas,
-existe a necessidade do desenvolvimento de um método de amostragem que favoreça as regiões com maior número de \textit{features} e durante o
-alinhamento, penalize o alinhamento entre regiões planas. Outro quesito em
-aberto é o aprimoramento na medição do erro de estimação do posicionamento da
+existe a necessidade do desenvolvimento de um método de amostragem que favoreça
+as regiões com maior número de \textit{features}, ou características, e durante
+o alinhamento, penalize o alinhamento entre regiões planas. Outro quesito em aberto é o aprimoramento na medição do erro de estimação do posicionamento da
 pá, uma vez que os erros de rotação e translação podem se somar ou se cancelar.
 
 A utilização de marcadores será empregrada sempre que possível, visando a
-redução da complexidade computacional, porém desenvolvimento da calibração do
+redu\-ção da complexidade computacional, porém desenvolvimento da calibração do
 robô necessita da chegada dos marcadores para que seja iniciado.
 
 
