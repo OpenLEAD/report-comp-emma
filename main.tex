@@ -75,6 +75,13 @@ draft=false]{report}%openany,version=last
   {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
   \titlespacing*{\chapter}{0pt}{50pt}{40pt}
 }
+
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{0ex}%
+   {-3.25ex plus -1ex minus -0.2ex}%
+   {1.5ex plus 0.2ex}%
+   {\normalfont\normalsize\bfseries}}
+\makeatother 
  
 \pdfcompresslevel = 9
 \oddsidemargin = 31pt
@@ -87,11 +94,10 @@ draft=false]{report}%openany,version=last
 \marginparwidth = 35pt
 \footskip = 30pt
 \pagenumbering{gobble}
+%\setcounter{secnumdepth}{3} 
 
 \begin{document} 
 
-% \sloppy
- 
 \pagenumbering{arabic}  
 \include{frontpage}
 
